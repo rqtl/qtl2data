@@ -20,22 +20,23 @@ diabetes. Taken from
 
 The data are also available as a zip file, [`b6btbr.zip`](b6btbr.zip).
 
-In addition, there are gene expression microarray data on 6 tissues, all gzipped:
+In addition, there are gene expression microarray data on 6 tissues;
+each is a zip file containing a single csv file:
 
-- [`b6btbr_microarray_annotation.csv.gz`](b6btbr_microarray_annotation.csv.gz),
+- [`b6btbr_microarray_annotation.csv.zip`](b6btbr_microarray_annotation.csv.zip),
   microarray annotation information
-- [`b6btbr_adipose.csv.gz`](b6btbr_adipose.csv),
-  gene expression data for adipose (gzipped)
-- [`b6btbr_gastroc.csv.gz`](b6btbr_gastroc.csv),
-  gene expression data for gastroc (gzipped)
-- [`b6btbr_hypo.csv.gz`](b6btbr_hypo.csv),
-  gene expression data for hypo (gzipped)
-- [`b6btbr_islet.csv.gz`](b6btbr_islet.csv),
-  gene expression data for islet (gzipped)
-- [`b6btbr_kidney.csv.gz`](b6btbr_kidney.csv),
-  gene expression data for kidney (gzipped)
-- [`b6btbr_liver.csv.gz`](b6btbr_liver.csv),
-  gene expression data for liver (gzipped)
+- [`b6btbr_adipose.csv.zip`](b6btbr_adipose.csv),
+  gene expression data for adipose
+- [`b6btbr_gastroc.csv.zip`](b6btbr_gastroc.csv),
+  gene expression data for gastroc
+- [`b6btbr_hypo.csv.zip`](b6btbr_hypo.csv),
+  gene expression data for hypo
+- [`b6btbr_islet.csv.zip`](b6btbr_islet.csv),
+  gene expression data for islet
+- [`b6btbr_kidney.csv.zip`](b6btbr_kidney.csv),
+  gene expression data for kidney
+- [`b6btbr_liver.csv.zip`](b6btbr_liver.csv),
+  gene expression data for liver
 
 Each of the array data files is about 50 GB; the annotion file is
 about 4 GB.
