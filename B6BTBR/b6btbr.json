@@ -1,0 +1,18 @@
+{
+    "description": ["Data from Alan Attie B6BTBR cross",
+                    "See Mouse Phenome Database, http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=532",
+                    "See Tian et al. (2015) Genetics 201:1253-1262, http://doi.org/10.1534/genetics.115.179432",
+                    "and Broman et al. (2015) G3 5:2177-2186, http://doi.org/10.1534/g3.115.019778"],
+    "crosstype": "f2",
+    "geno": "b6btbr_geno.csv",
+    "pheno": "b6btbr_pheno.csv",
+    "covar": "b6btbr_covar.csv",
+    "gmap": "b6btbr_gmap.csv",
+    "pmap": "b6btbr_pmap.csv",
+    "alleles": ["B", "R"],
+    "genotypes": {"BB": 1, "BR": 2, "RR": 3},
+    "sex": {"covar": "Sex", "Female": "Female", "Male": "Male"},
+    "cross_info": {"covar": "pgm", "0": 0, "1": 1},
+    "x_chr": "X",
+    "na.strings": ["-", "NA"]
+}
