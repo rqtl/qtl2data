@@ -23,5 +23,6 @@
     "covar": "ngen"
   },
   "gmap": "recla_gmap.csv",
-  "pmap": "recla_pmap.csv"
-} 
+  "pmap": "recla_pmap.csv",
+  "alleles": ["A", "B", "C", "D", "E", "F", "G", "H"]
+}
