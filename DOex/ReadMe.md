@@ -37,8 +37,7 @@ Also included are some derived calculations:
 Further, there's a table of SNPs for a 2 Mbp region on chromosome 2:
 
 - [`c2_snpinfo.rds`](c2_snpinfo.rds) - A data frame with SNP genotypes
-  for the 8 Collaborative Cross founder strains in a small region on
-  mouse chromosome 2.
+  for the 8 Collaborative Cross founder strains.
 
 ### File format
 
