@@ -8,6 +8,10 @@ Example data sets for [R/qtl2](http://kbroman.org/qtl2).
 - [`DO_Recla`](DO_Recla) - Diversity Outcross data, from
   [Recla et al. (2014) Mamm Genome 25:211-222](http://www.ncbi.nlm.nih.gov/pubmed/24700285)
 
+- [`DOex`](DOex) - A reduced set of Diversity Outcross data, from
+  [Recla et al. (2014)](http://www.ncbi.nlm.nih.gov/pubmed/24700285)
+  but subsetted to 3 chromosomes, 1 phenotype, and a reduced set of markers
+
 - [`B6BTBR`](B6BTBR) - Intercross data, from Alan Attie; see the
   [record at the Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=532),
   as well as
