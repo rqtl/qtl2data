@@ -28,11 +28,17 @@ The data are also available as a zip file, [`DOex.zip`](DOex.zip).
 
 Also included are some derived calculations:
 
-- [`DOex_genoprobs.rds`](DOex_genoprobs) - Genotype probabilities
+- [`DOex_genoprobs.rds`](DOex_genoprobs.rds) - Genotype probabilities
   calculated with `qtl2geno::calc_genoprob()`
-- [`DOex_alleleprobs.rds`](DOex_alleleprobs) - Allele probabilities
+- [`DOex_alleleprobs.rds`](DOex_alleleprobs.rds) - Allele probabilities
   calculated from [`DOex_genoprobs.rds`](DOex_genoprobs) and collapsed
   to alleles with `qtl2geno::genoprob_to_alleleprob()`
+
+Further, there's a table of SNPs for a 2 Mbp region on chromosome 2:
+
+- [`c2_snpinfo.rds`](c2_snpinfo.rds) - A data frame with SNP genotypes
+  for the 8 Collaborative Cross founder strains in a small region on
+  mouse chromosome 2.
 
 ### File format
 
