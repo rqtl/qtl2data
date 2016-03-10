@@ -24,13 +24,15 @@ three chromosomes, one phenotype, and with reduced markers.
 - [`DOex_pmap.csv`](DOex_pmap.csv) - Physical map of markers (positions in
   NCBI38/mm10 Mbp)
 
+The data are also available as a zip file, [`DOex.zip`](DOex.zip).
+
+Also included are some derived calculations:
+
 - [`DOex_genoprobs.rds`](DOex_genoprobs) - Genotype probabilities
   calculated with `qtl2geno::calc_genoprob()`
 - [`DOex_alleleprobs.rds`](DOex_alleleprobs) - Allele probabilities
   calculated from [`DOex_genoprobs.rds`](DOex_genoprobs) and collapsed
   to alleles with `qtl2geno::genoprob_to_alleleprob()`
-
-The data are also available as a zip file, [`DOex.zip`](DOex.zip).
 
 ### File format
 
