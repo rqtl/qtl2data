@@ -55,3 +55,25 @@ file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DOex/DOex.zip")
 DOex <- read_cross2(file)
 ```
+
+You can load pre-calculated genotype probabilities (~19 MB) as follows:
+
+```r
+tmpfile <- tempfile()
+file <- paste0("https://raw.githubusercontent.com/rqtl/",
+               "qtl2data/master/DOex/DOex_genoprobs.rds")
+download.file(file, tmpfile)
+pr <- readRDS(tmpfile)
+unlink(tmpfile)
+```
+
+You can load pre-calculated allele probabilities (~5 MB) as follows:
+
+```r
+tmpfile <- tempfile()
+file <- paste0("https://raw.githubusercontent.com/rqtl/",
+               "qtl2data/master/DOex/DOex_alleleprobs.rds")
+download.file(file, tmpfile)
+apr <- readRDS(tmpfile)
+unlink(tmpfile)
+```
