@@ -21,6 +21,9 @@ Example data sets for [R/qtl2](http://kbroman.org/qtl2).
 
 - [`Gough`](Gough) - Intercross data, from Bret Payseur, for a mouse
   intercross between Gough Island mice and WSB. See
+  the
+  [record at the Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=539),
+  as well as
   [Gray MM et al. (2015) Genetics 201:213-228](http://doi.org/10.1534/genetics.115.177790).
 
 Also see the

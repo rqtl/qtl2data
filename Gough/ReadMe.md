@@ -12,6 +12,9 @@ derivatives of body weight.
 The phenotypes include raw body weights weekly for 16 weeks, smoothed
 body weights, and the first derivative of body weight (in g/week).
 
+Also available at the
+[Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=539).
+
 ### Files
 
 - [`gough.json`](gough.json), the control file ([JSON format](http://www.json.org/))
