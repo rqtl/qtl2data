@@ -25,6 +25,15 @@ Founder genotypes from <ftp://ftp.jax.org/MUGA/>
 The data are also available as a zip file, [`do.zip`](do.zip).
 
 
+### X and Y chromosome SNP intensities
+
+Detailed SNP array data are available at the
+[Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=289).
+
+We've extracted the overall intensities for SNPs on the X and Y
+chromosomes, see [`XYint/`](XYint/).
+
+
 ### File format
 
 See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/input_files.html).
