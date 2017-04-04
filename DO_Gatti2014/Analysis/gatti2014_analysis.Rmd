@@ -1,0 +1,69 @@
+---
+title: "Brief analysis of Gatti2014 data"
+output: html_document
+---
+
+```{r options, echo=FALSE}
+knitr::opts_chunk$set(fig.width=11, fig.height=6,
+                      message=FALSE, warning=FALSE)
+```
+
+
+This is a quick analysis of the data from Gatti et al. (2014),
+available at
+<https://github.com/rqtl/qtl2data/tree/master/DO_Gatti2014>
+
+We first load the data directly from the web.
+
+```{r load_data}
+library(qtl2geno)
+file <- paste0("https://raw.githubusercontent.com/rqtl/",
+               "qtl2data/master/DO_Gatti2014/do.zip")
+gatti <- read_cross2(file)
+```
+
+We calculate genotype probabilities. I use `n_cores <- 0`
+throughout (which detects the number of available CPU cores and uses
+all of them). If you have limited wRAM on your machine, you may need
+to change this to `n_cores <- 1`.
+
+```{r calc_genoprob}
+n_cores <- 0
+probs <- calc_genoprob(gatti, cores=n_cores)
+```
+
+We now convert the genotype probabilities to haplotype dosages.
+
+```{r genoprob_to_alleleprob}
+aprobs <- genoprob_to_alleleprob(probs, cores=n_cores)
+```
+
+We now calculate kinship matrices, by the "leave one chromosome out
+(loco)" method.
+
+```{r calc_kinship}
+kinship <- calc_kinship(aprobs, "loco", cores=n_cores)
+```
+
+A genome scan of all phenotypes.
+
+```{r scan1}
+library(qtl2scan)
+out <- scan1(aprobs, gatti$pheno, kinship, cores=n_cores)
+```
+
+Plot of the results, with `r pheno_names(gatti)[1]` in blue
+and `r pheno_names(gatti)[2]` in red.
+
+```{r plot_scan1}
+library(qtl2plot)
+plot(out, gatti$gmap, lodcolumn=1, col="slateblue",
+     ylim=c(0, maxlod(out)*1.05))
+plot(out, gatti$gmap, lodcolumn=2, col="violetred", add=TRUE)
+```
+
+Here are the peaks above 6.5.
+
+```{r lod_peaks}
+find_peaks(out, gatti$gmap, threshold=6.5)
+```

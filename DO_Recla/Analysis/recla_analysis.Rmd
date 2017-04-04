@@ -1,0 +1,71 @@
+---
+title: "Brief analysis of Recla data"
+output: html_document
+---
+
+```{r options, echo=FALSE}
+knitr::opts_chunk$set(fig.width=11, fig.height=6,
+                      message=FALSE, warning=FALSE)
+```
+
+
+This is a quick analysis of the data from Recla et al. (2014)
+and Logan et al (2013), available at
+<https://github.com/rqtl/qtl2data/tree/master/DO_Recla>
+
+We first load the data directly from the web.
+
+```{r load_data}
+library(qtl2geno)
+file <- paste0("https://raw.githubusercontent.com/rqtl/",
+               "qtl2data/master/DO_Recla/recla.zip")
+recla <- read_cross2(file)
+```
+
+We calculate genotype probabilities. I use `n_cores <- 0`
+throughout (which detects the number of available CPU cores and uses
+all of them). If you have limited wRAM on your machine, you may need
+to change this to `n_cores <- 1`.
+
+```{r calc_genoprob}
+n_cores <- 0
+probs <- calc_genoprob(recla, cores=n_cores)
+```
+
+We now convert the genotype probabilities to haplotype dosages.
+
+```{r genoprob_to_alleleprob}
+aprobs <- genoprob_to_alleleprob(probs, cores=n_cores)
+```
+
+We now calculate kinship matrices, by the "leave one chromosome out
+(loco)" method.
+
+```{r calc_kinship}
+kinship <- calc_kinship(aprobs, "loco", cores=n_cores)
+```
+
+A genome scan of all phenotypes.
+
+```{r scan1}
+library(qtl2scan)
+out <- scan1(aprobs, recla$pheno, kinship, cores=n_cores)
+```
+
+Plot of the results, all in gray except for the trait with the largest
+LOD score, in blue.
+
+```{r plot_scan1}
+library(qtl2plot)
+plot(out, recla$gmap, lodcolumn=1, col="gray60",
+     ylim=c(0, maxlod(out)*1.05))
+for(i in 2:ncol(out))
+    plot(out, recla$gmap, lodcolumn=i, col="gray60", add=TRUE)
+plot(out, recla$gmap, lodcolumn=5, col="slateblue", add=TRUE)
+```
+
+Here are the peaks above 6.5.
+
+```{r lod_peaks}
+find_peaks(out, recla$gmap, threshold=6.5)
+```
