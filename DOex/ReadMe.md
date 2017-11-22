@@ -34,10 +34,15 @@ Also included are some derived calculations:
   calculated from [`DOex_genoprobs.rds`](DOex_genoprobs) and collapsed
   to alleles with `qtl2geno::genoprob_to_alleleprob()`
 
-Further, there's a table of SNPs for a 2 Mbp region on chromosome 2:
+Further, there are tables of SNPs and genes for a 2 Mbp region on chromosome 2:
 
 - [`c2_snpinfo.rds`](c2_snpinfo.rds) - A data frame with SNP genotypes
-  for the 8 Collaborative Cross founder strains.
+  for the 8 Collaborative Cross founder strains (in the interval
+  96.5-98.5 Mbp on chr 2)
+
+- [`c2_genes.rds`](c2_genes.rds) - A data frame with gene locations (in the interval
+  96.5-98.5 Mbp on chr 2)
+
 
 ### File format
 
