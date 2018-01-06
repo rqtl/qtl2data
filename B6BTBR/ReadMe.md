@@ -65,7 +65,7 @@ See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/inpu
 Load these data into R directly from the web as follows:
 
 ```r
-library(qtl2geno)
+library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/B6BTBR/b6btbr.zip")
 b6btbr <- read_cross2(file)
@@ -75,7 +75,7 @@ To read the microarray data, use `read_pheno()`. You can read the data
 for a single tissue, as a matrix:
 
 ```r
-library(qtl2geno)
+library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/B6BTBR/b6btbr_islet.csv.zip")
 islet <- read_pheno(file)
@@ -85,7 +85,7 @@ Alternatively, read the data for a single tissue plus the annotation
 information, creating a list with `pheno` and `phenocovar`:
 
 ```r
-library(qtl2geno)
+library(qtl2)
 url <- "https://raw.githubusercontent.com/rqtl/qtl2data/master/B6BTBR/"
 islet_list <- read_pheno(paste0(url, "b6btbr_islet.csv.zip"),
                          paste0(url, "b6btbr_microarray_annotation.csv.zip"))

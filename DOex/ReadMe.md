@@ -29,10 +29,10 @@ The data are also available as a zip file, [`DOex.zip`](DOex.zip).
 Also included are some derived calculations:
 
 - [`DOex_genoprobs.rds`](DOex_genoprobs.rds) - Genotype probabilities
-  calculated with `qtl2geno::calc_genoprob()`
+  calculated with `qtl2::calc_genoprob()`
 - [`DOex_alleleprobs.rds`](DOex_alleleprobs.rds) - Allele probabilities
   calculated from [`DOex_genoprobs.rds`](DOex_genoprobs) and collapsed
-  to alleles with `qtl2geno::genoprob_to_alleleprob()`
+  to alleles with `qtl2::genoprob_to_alleleprob()`
 
 Further, there are tables of SNPs and genes for a 2 Mbp region on chromosome 2:
 
@@ -60,7 +60,7 @@ Mamm Genome 25:211-222
 Load these data into R directly from the web as follows:
 
 ```r
-library(qtl2geno)
+library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DOex/DOex.zip")
 DOex <- read_cross2(file)

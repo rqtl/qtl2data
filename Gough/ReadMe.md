@@ -45,7 +45,7 @@ Genetics 201:213-228
 Load these data into R directly from the web as follows:
 
 ```r
-library(qtl2geno)
+library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/Gough/gough.zip")
 gough <- read_cross2(file)

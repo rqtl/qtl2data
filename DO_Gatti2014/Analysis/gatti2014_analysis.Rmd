@@ -16,7 +16,7 @@ available at
 We first load the data directly from the web.
 
 ```{r load_data}
-library(qtl2geno)
+library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DO_Gatti2014/do.zip")
 gatti <- read_cross2(file)
@@ -48,7 +48,6 @@ kinship <- calc_kinship(aprobs, "loco", cores=n_cores)
 A genome scan of all phenotypes.
 
 ```{r scan1}
-library(qtl2scan)
 out <- scan1(aprobs, gatti$pheno, kinship, cores=n_cores)
 ```
 
@@ -56,7 +55,6 @@ Plot of the results, with `r pheno_names(gatti)[1]` in blue
 and `r pheno_names(gatti)[2]` in red.
 
 ```{r plot_scan1}
-library(qtl2plot)
 plot(out, gatti$gmap, lodcolumn=1, col="slateblue",
      ylim=c(0, maxlod(out)*1.05))
 plot(out, gatti$gmap, lodcolumn=2, col="violetred", add=TRUE)
