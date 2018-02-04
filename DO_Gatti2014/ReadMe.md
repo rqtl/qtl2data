@@ -28,7 +28,7 @@ The data are also available as a zip file, [`do.zip`](do.zip).
 ### X and Y chromosome SNP intensities
 
 Detailed SNP array data are available at the
-[Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=289).
+[Mouse Phenome Database](https://phenome.jax.org/projects/Gatti2).
 
 We've extracted the overall intensities for SNPs on the X and Y
 chromosomes, see [`XYint/`](XYint/).

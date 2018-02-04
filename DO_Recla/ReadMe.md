@@ -2,13 +2,13 @@
 
 ### Source
 
-<http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=285>
+<https://phenome.jax.org/projects/Recla1>
 
 Founder genotypes from <ftp://ftp.jax.org/MUGA/>
 
 Additional phenotypes at
-<http://phenome.jax.org/db/q?rtn=projects/details&id=470>
-(in particular, <http://phenome.jax.org/tmp/Chesler4_table.csv>)
+<https://phenome.jax.org/projects/Chesler4>
+(in particular, <http://phenomedoc.jax.org/MPD_projdatasets/Chesler4.csv>)
 
 
 ### Files

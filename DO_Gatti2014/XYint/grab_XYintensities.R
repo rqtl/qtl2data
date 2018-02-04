@@ -1,6 +1,6 @@
 # grab X and Y chromosome SNP intensities for Gatti et al (2014) data
 
-# download Gatti_2014.zip from http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=289
+# download Gatti_2014.zip from https://phenome.jax.org/projects/Gatti2
 # extract and grab FinalReport.txt and SNP_Map.txt
 
 # load detailed genotypes and SNP map

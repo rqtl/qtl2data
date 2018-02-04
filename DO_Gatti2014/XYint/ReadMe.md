@@ -2,7 +2,7 @@
 
 The detailed SNP array data for Gatti et al (2014) are available at
 the Mouse Phenome Database:
-<http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=289>
+<https://phenome.jax.org/projects/Gatti2>
 
 The R script in this directory,
 [`grab_XYintensities.R`](grab_XYintensities.R), extracts the array
