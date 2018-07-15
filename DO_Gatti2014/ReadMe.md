@@ -2,7 +2,7 @@
 
 ### Source
 
-<http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=289>
+<http://phenome.jax.org/projects/Gatti2>
 
 Founder genotypes from <ftp://ftp.jax.org/MUGA/>
 
