@@ -4,9 +4,9 @@
 
 Data from a B6 &times; BTBR intercross to investigate obesity and
 diabetes. Taken from
-[Mouse Phenome Database](http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=532)
+[Mouse Phenome Database](https://phenome.jax.org/projects/Attie1)
 (plus three clinical phenotypes considered in
-[Broman et al. (2015)](http://www.ncbi.nlm.nih.gov/pubmed/26290572):
+[Broman et al. (2015)](https://www.ncbi.nlm.nih.gov/pubmed/26290572):
 10 week insulin and binary indicators for each of agouti and tufted coats).
 
 ### Files
@@ -43,24 +43,24 @@ about 4 GB.
 
 ### File format
 
-See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/input_files.html).
+See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/input_files.html).
 
 ### Citations
 
 - Tian J, Keller MP, Oler AT, Rabaglia ME, Schueler KL, Stapleton DS,
   Broman AT, Zhao W, Kendziorski C, Yandell BS, Hagenbuch B, Broman
   KW, Attie AD (2015)
-  [Identification of the bile acid transporter _Slco1a6_ as a candidate gene that broadly affects gene expression in mouse pancreatic islets](http://www.ncbi.nlm.nih.gov/pubmed/26385979).
+  [Identification of the bile acid transporter _Slco1a6_ as a candidate gene that broadly affects gene expression in mouse pancreatic islets](https://www.ncbi.nlm.nih.gov/pubmed/26385979).
   Genetics 201:1253-1262
-  [doi:10.1534/genetics.115.179432](http://doi.org/10.1534/genetics.115.179432)
+  [doi:10.1534/genetics.115.179432](https://doi.org/10.1534/genetics.115.179432)
 
 - Broman KW, Keller MP, Broman AT, Kendziorski C, Yandell BS, Sen &#346;,
   Attie AD (2015)
-  [Identification and correction of sample mix-ups in expression genetic data: A case study](http://www.ncbi.nlm.nih.gov/pubmed/26290572).
+  [Identification and correction of sample mix-ups in expression genetic data: A case study](https://www.ncbi.nlm.nih.gov/pubmed/26290572).
   G3 5:2177-2186
-  [doi:10.1534/g3.115.019778](http://doi.org/10.1534/g3.115.019778)
+  [doi:10.1534/g3.115.019778](https://doi.org/10.1534/g3.115.019778)
 
-### Use with [R/qtl2](http://kbroman.org/qtl2)
+### Use with [R/qtl2](https://kbroman.org/qtl2)
 
 Load these data into R directly from the web as follows:
 
