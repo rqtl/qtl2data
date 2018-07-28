@@ -2,7 +2,7 @@
 
 ### Source
 
-<http://phenome.jax.org/db/q?rtn=projects/projdet&reqprojid=285>
+<https://phenome.jax.org/projects/Recla1>
 
 Founder genotypes from <ftp://ftp.jax.org/MUGA/>
 
