@@ -1,6 +1,6 @@
 {
-    "description": ["Data from Gray et al. (2015) Genetics 201:213, http://doi.org/10.1534/genetics.115.177790",
-                    "Abstract at PubMed: http://www.ncbi.nlm.nih.gov/pubmed/26199233"],
+    "description": ["Data from Gray et al. (2015) Genetics 201:213, https://doi.org/10.1534/genetics.115.177790",
+                    "Abstract at PubMed: https://www.ncbi.nlm.nih.gov/pubmed/26199233"],
     "crosstype": "f2",
     "geno": "gough_geno.csv",
     "pheno": "gough_pheno.csv",

@@ -30,17 +30,17 @@ The data are also available as a zip file, [`gough.zip`](gough.zip).
 
 ### File format
 
-See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/input_files.html).
+See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/input_files.html).
 
 ### Citation
 
 Gray MM, Parmenter MD, Hogan CA, Ford I, Cuthbert RJ, Ryan PG, Broman
 KW, Payseur BA (2015)
-[Genetics of rapid and extreme size evolution in island mice](http://www.ncbi.nlm.nih.gov/pubmed/26199233).
+[Genetics of rapid and extreme size evolution in island mice](https://www.ncbi.nlm.nih.gov/pubmed/26199233).
 Genetics 201:213-228
-[doi: 10.1534/genetics.115.177790](http://doi.org/10.1534/genetics.115.177790)
+[doi: 10.1534/genetics.115.177790](https://doi.org/10.1534/genetics.115.177790)
 
-### Use with [R/qtl2](http://kbroman.org/qtl2)
+### Use with [R/qtl2](https://kbroman.org/qtl2)
 
 Load these data into R directly from the web as follows:
 
