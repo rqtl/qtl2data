@@ -30,7 +30,7 @@ The data are also available as a zip file, [`recla.zip`](recla.zip).
 
 ### File format
 
-See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/input_files.html).
+See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/input_files.html).
 
 
 ### Citations
@@ -45,7 +45,7 @@ C, Wilcox T, Gatti DM, Bult CJ, Churchill GA, Chesler EJ (2013)
 Genes Brain Behav 12:424-437
 
 
-### Use with [R/qtl2](http://kbroman.org/qtl2)
+### Use with [R/qtl2](https://kbroman.org/qtl2)
 
 Load these data into R directly from the web as follows:
 

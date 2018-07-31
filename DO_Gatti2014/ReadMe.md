@@ -36,7 +36,7 @@ chromosomes, see [`XYint/`](XYint/).
 
 ### File format
 
-See the [R/qtl2 input file format](http://kbroman.org/qtl2/assets/vignettes/input_files.html).
+See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/input_files.html).
 
 
 ### Citation
@@ -48,7 +48,7 @@ N, Cheng R, Pomp D, Palmer A, Chesler EJ, Broman KW, Churchill GA
 G3 4:1623-1633
 
 
-### Use with [R/qtl2](http://kbroman.org/qtl2)
+### Use with [R/qtl2](https://kbroman.org/qtl2)
 
 Load these data into R directly from the web as follows:
 
