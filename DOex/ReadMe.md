@@ -52,7 +52,7 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 ### Citations
 
 Recla JM, Robledo RF, Gatti DM, Bult CJ, Churchill GA, Chesler EJ (2014)
-[Precise genetic mapping and integrative bioinformatics in Diversity Outbred mice reveals Hydin as a novel pain gene](http://www.ncbi.nlm.nih.gov/pubmed/24700285).
+[Precise genetic mapping and integrative bioinformatics in Diversity Outbred mice reveals Hydin as a novel pain gene](https://www.ncbi.nlm.nih.gov/pubmed/24700285).
 Mamm Genome 25:211-222
 
 ### Use with [R/qtl2](https://kbroman.org/qtl2)
