@@ -15,9 +15,9 @@ Example data sets for [R/qtl2](https://kbroman.org/qtl2).
 - [`B6BTBR`](B6BTBR) - Intercross data, from Alan Attie; see the
   [record at the Mouse Phenome Database](https://phenome.jax.org/projects/Attie1),
   as well as
-  [Tian et al. (2015) Genetics 201:1253-1262](https://doi.org/10.1534/genetics.115.179432"),
+  [Tian et al. (2015) Genetics 201:1253-1262](https://doi.org/10.1534/genetics.115.179432),
   and
-  [Broman et al. (2015) G3 5:2177-2186](https://doi.org/10.1534/g3.115.019778").
+  [Broman et al. (2015) G3 5:2177-2186](https://doi.org/10.1534/g3.115.019778).
 
 - [`Gough`](Gough) - Intercross data, from Bret Payseur, for a mouse
   intercross between Gough Island mice and WSB. See
