@@ -3,10 +3,10 @@ all: do.json do.zip
 R_OPTS=--no-save --no-restore --no-init-file --no-site-file # --vanilla, but without --no-environ
 
 Orig/Gatti_2014_pheno.csv:
-	curl http://phenome.jax.org/grpdoc/QTL_Archive/gatti_2014/$(@F) > $@
+	curl https://phenomedoc.jax.org/QTL_Archive/gatti_2014/$(@F) > $@
 
 Orig/Gatti_2014_geno.csv:
-	curl http://phenome.jax.org/grpdoc/QTL_Archive/gatti_2014/$(@F) > $@
+	curl https://phenomedoc.jax.org/QTL_Archive/gatti_2014/$(@F) > $@
 
 Orig/muga_code.Rdata:
 	curl ftp://ftp.jax.org/MUGA/$(@F) > $@
