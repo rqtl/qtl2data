@@ -5,24 +5,24 @@
   "na.strings": ["-", "NA"],
   "comment.char": "#",
   "geno": "DOex_geno.csv",
-  "genotypes": {
-    "A": "1",
-    "H": "2",
-    "B": "3"
-  },
   "founder_geno": "DOex_foundergeno.csv",
   "gmap": "DOex_gmap.csv",
   "pmap": "DOex_pmap.csv",
   "pheno": "DOex_pheno.csv",
   "covar": "DOex_covar.csv",
   "alleles": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "x_chr": "X",
+  "genotypes": {
+    "A": 1,
+    "H": 2,
+    "B": 3
+  },
   "founder_geno_transposed": true,
   "sex": {
     "covar": "Sex",
     "male": "male",
     "female": "female"
   },
-  "x_chr": "X",
   "cross_info": {
     "covar": "ngen"
   }
