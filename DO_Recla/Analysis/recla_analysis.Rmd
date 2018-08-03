@@ -29,7 +29,7 @@ to change this to `n_cores <- 1`.
 
 ```{r calc_genoprob}
 n_cores <- 0
-probs <- calc_genoprob(recla, cores=n_cores)
+probs <- calc_genoprob(recla, error_prob=0.002, map_function="c-f", cores=n_cores)
 ```
 
 We now convert the genotype probabilities to haplotype dosages.
