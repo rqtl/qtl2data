@@ -1,28 +1,29 @@
 {
   "description": "DO data from Gatti et al. (2014) G3 4:1623-1633",
   "crosstype": "do",
+  "sep": ",",
+  "na.strings": ["-", "NA"],
+  "comment.char": "#",
   "geno": "do_geno.csv",
-  "geno_transposed": true,
   "founder_geno": "do_foundergeno.csv",
-  "founder_geno_transposed": true,
-  "genotypes": {
-    "1": "1",
-    "2": "2",
-    "3": "3"
-  },
+  "gmap": "do_gmap.csv",
+  "pmap": "do_pmap.csv",
   "pheno": "do_pheno.csv",
-  "pheno_transposed": false,
   "covar": "do_covar.csv",
+  "x_chr": "X",
+  "genotypes": {
+    "A": 1,
+    "H": 2,
+    "B": 3
+  },
+  "geno_transposed": true,
+  "founder_geno_transposed": true,
   "sex": {
     "covar": "Sex",
     "F": "female",
     "M": "male"
   },
-  "x_chr": "X",
   "cross_info": {
     "covar": "ngen"
-  },
-  "gmap": "do_gmap.csv",
-  "pmap": "do_pmap.csv",
-  "alleles": ["A","B","C","D","E","F","G","H"]
+  }
 }
