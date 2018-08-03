@@ -6,7 +6,7 @@ file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DO_Recla/recla.zip")
 DOex <- read_cross2(file)
 
-# reduce to 300 individuals on 4 chromosomes
+# reduce to 3 chromosomes
 DOex <- DOex[, c("2","3","X")]
 
 # just one phenotype
