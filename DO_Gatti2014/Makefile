@@ -22,7 +22,7 @@ Orig/muga_snps.Rdata:
 	[ -d Orig ] || mkdir Orig
 	curl ftp://ftp.jax.org/MUGA/$(@F) > $@
 
-do.json: Code/convert_data.R Orig/Gatti_2014_geno.csv Orig/Gatti_2014_pheno.csv Orig/muga_code.Rdata Orig/muga_geno.Rdata Orig/muga_snps.Rdata Code/func.R Code/convert_geno.cpp Code/find_consensus_geno.cpp
+do.json: Code/convert_data.R Orig/Gatti_2014_geno.csv Orig/Gatti_2014_pheno.csv Orig/muga_code.Rdata Orig/muga_geno.Rdata Orig/muga_snps.Rdata
 	cd Code;R $(R_OPTS) -e 'source("$(<F)", echo=TRUE)'
 
 do.zip: do.json
