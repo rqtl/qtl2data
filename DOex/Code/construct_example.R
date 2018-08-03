@@ -2,7 +2,9 @@
 
 # Full Recla data
 library(qtl2)
-DOex <- read_cross2("../DO_Recla/recla.json")
+file <- paste0("https://raw.githubusercontent.com/rqtl/",
+               "qtl2data/master/DO_Recla/recla.zip")
+DOex <- read_cross2(file)
 
 # reduce to 300 individuals on 4 chromosomes
 DOex <- DOex[, c("2","3","X")]
@@ -11,15 +13,8 @@ DOex <- DOex[, c("2","3","X")]
 DOex$pheno <- DOex$pheno[,5,drop=FALSE]
 
 # subset map to 0.5 cM
-sub <- pick_marker_subset(DOex$gmap, 0.5)
-
-for(i in seq(along=sub)) {
-    mn <- names(sub[[i]])
-    DOex$gmap[[i]] <- DOex$gmap[[i]][mn]
-    DOex$pmap[[i]] <- DOex$pmap[[i]][mn]
-    DOex$geno[[i]] <- DOex$geno[[i]][,mn]
-    DOex$founder_geno[[i]] <- DOex$founder_geno[[i]][,mn]
-}
+sub <- reduce_markers(DOex$gmap, 0.5)
+DOex <- pull_markers(DOex, unlist(lapply(sub, names)))
 
 # write files
 ### genotypes
@@ -64,6 +59,7 @@ write.table(cbind(marker=rownames(pmaptab), pmaptab), file="DOex_pmap.csv",
 write_control_file(output_file="DOex.json",
                    crosstype="do",
                    geno_file="DOex_geno.csv",
+                   geno_codes=c(A=1, H=2, B=3),
                    founder_geno_file="DOex_foundergeno.csv",
                    founder_geno_transposed=TRUE,
                    gmap_file="DOex_gmap.csv",
@@ -72,6 +68,12 @@ write_control_file(output_file="DOex.json",
                    covar_file="DOex_covar.csv",
                    sex_covar="Sex",
                    sex_codes=list(male="male", female="female"),
+                   xchr="X",
                    crossinfo_covar="ngen",
-                   crossinfo_codes=NA,
-                   alleles=LETTERS[1:8])
+                   alleles=LETTERS[1:8],
+                   description=paste0("Example DO data, from Recla et al. (2014) Mamm ",
+                                      "Genome 25:211-222; subsetted to 3 chr, 1 phenotype, ",
+                                      "and reduced markers"),
+                   overwrite=TRUE)
+
+zip_datafiles("DOex.json", overwrite=TRUE)
