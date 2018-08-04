@@ -1,5 +1,7 @@
 # Prepare a smallish set of DO example data
 
+set.seed(20180804)
+
 # Full Recla data
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
