@@ -15,7 +15,10 @@ and the phenotypes in
 There is genotype data (at a total of 1027 markers on 5 chromosomes) on
 703 MAGIC lines. 677 of the lines have phenotype data, for 8 phenotypes.
 
-
+For related data, see
+<http://mtweb.cs.ucl.ac.uk/mus/www/19genomes/magic.html> and
+the supplementary material from [Kover et al.
+(2009)](https://doi.org/10.1371/journal.pgen.1000551).
 
 
 ### File conversion
