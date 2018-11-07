@@ -23,13 +23,14 @@ the supplementary material from [Kover et al.
 
 ### File conversion
 
-- [`Python/xlsx2csv.py`](Python/xlsx2csv.py) for extracting the
-  worksheets from the raw `.xlsx` files, from <https://github.com/dilshod/xlsx2csv>.
-
 - [`R/convert_data.R`](R/convert_data.R) for converting the data to
   [R/qtl2](https://kbroman.org/qtl2) format.
 
 - [`Makefile`](Makefile) to automate and document the data conversions.
+
+- I also make use of a Python script,
+  [xlsx2csv.py](https://github.com/dilshod/xlsx2csv); the `Makefile`
+  includes instructions for downloading and using it.
 
 
 
