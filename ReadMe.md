@@ -26,6 +26,9 @@ Example data sets for [R/qtl2](https://kbroman.org/qtl2).
   as well as
   [Gray MM et al. (2015) Genetics 201:213-228](https://doi.org/10.1534/genetics.115.177790).
 
+- [`ArabMAGIC`](ArabMAGIC) - Data on 19-way Arabidopsis MAGIC lines,
+  from [Gnan et al. (2014) Genetics 198:1751-1758](https://doi.org/10.1534/genetics.114.170746)
+
 Also see the
 [vignette on input file formats](https://kbroman.org/qtl2/assets/vignettes/input_files.html)
 and [other sample datasets](https://kbroman.org/qtl2/pages/sampledata.html).
