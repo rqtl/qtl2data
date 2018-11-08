@@ -56,7 +56,7 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 
 ### Citations
 
-- Gnan S, Priest A, Kover PX (2009) The genetic basis of natural
+- Gnan S, Priest A, Kover PX (2014) The genetic basis of natural
   variation in seed size and seed number and their trade-off using
   _Arabidopsis thaliana_ MAGIC lines. Genetics 198:1751-1758.
   [doi:10.1534/genetics.114.170746](https://doi.org/10.1534/genetics.114.170746)
