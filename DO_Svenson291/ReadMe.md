@@ -28,6 +28,11 @@ Raw genotype files available at figshare (*URL to be added*).
 See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/input_files.html).
 
 
+### Citation
+
+(*Citations needed*)
+
+
 
 ### Use with [R/qtl2](https://kbroman.org/qtl2)
 
