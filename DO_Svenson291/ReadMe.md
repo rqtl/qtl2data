@@ -37,5 +37,5 @@ Load these data into R directly from the web as follows:
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DO_Svenson291/svenson.zip")
-do <- read_cross2(file)
+do <- read_cross2(file, quiet=FALSE)
 ```
