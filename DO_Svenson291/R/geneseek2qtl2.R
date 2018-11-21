@@ -61,7 +61,7 @@ for(ifile in ifiles) {
     rezip <- FALSE
     if(!file.exists(ifile)) {
         cat(" -Unzipping file\n")
-        system(paste("gunzip", ifile))
+        system(paste("gunzip -k", ifile))
         rezip <- TRUE
     }
 
@@ -123,9 +123,8 @@ for(ifile in ifiles) {
         cYint <- cbind_smother(cYint, cY)
     }
 
-    if(rezip) {
-        cat(" -Rezipping file\n")
-        system(paste("gzip", ifile))
+    if(rezip && file.exists(paste0(ifile, ".gz"))) {
+        unlink(ifile)
     }
 }
 
