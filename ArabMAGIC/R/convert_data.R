@@ -25,13 +25,6 @@ y <- data.table::fread("../RawData/founder_genotypes.csv", skip=1, data.table=FA
 # marker names as rownames
 rownames(y) <- y[,6]
 
-### Omit markers with missing position
-# omit rows where the bp_pos column is missing
-y <- y[!is.na(y$bp_pos),]
-g <- g[rownames(g) %in% rownames(y),]
-
-
-
 
 
 # determine alleles present at each marker
@@ -69,20 +62,26 @@ for(i in 1:nrow(fg)) {
 # Physical map
 ##############################
 
-bp_pos <- setNames(y$bp_pos, rownames(y))
-chr <- setNames(rep(1, nrow(y)), rownames(y))
-cur_chr <- 1
-for(i in seq_along(bp_pos)[-1]) {
-    if(bp_pos[i] < bp_pos[i-1]) cur_chr <- cur_chr+1
-    chr[i] <- cur_chr
-}
+# Download this from Richard Mott's website, as it provides with TAIR10 genome coordinates
+map <- lapply(1:5, function(i){
+  # Map file address
+  map_file <- paste0("http://mtweb.cs.ucl.ac.uk/mus/www/POOLING/ARABIDOPSIS/FOUNDER/GENOTYPES/chr",
+                     i, ".MAGIC.map")
+  # Reading data
+  data.table::fread(map_file, data.table = FALSE)
+})
+map <- do.call("rbind", map)
 
-# convert to data frame, with marker names as the first column
-map <- data.frame(marker=names(chr),
-                  chr=chr,
-                  pos=bp_pos/1e6,
-                  stringsAsFactors=FALSE)
+# Retain only relevant columns
+map <- map[, c("marker", "chromosome", "bp")]
+names(map) <- c("marker", "chr", "pos")
 rownames(map) <- map$marker
+map$pos <- map$pos/1e6
+
+# retain only common markers
+map <- map[rownames(map) %in% rownames(g), ]
+g <- g[rownames(g) %in% rownames(map), ]
+fg <- fg[rownames(fg) %in% rownames(map), ]
 
 # make sure markers are in the same order
 stopifnot( all(map$marker == rownames(g)) )
