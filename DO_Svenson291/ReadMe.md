@@ -2,7 +2,7 @@
 
 ### Source
 
-Raw genotype files available at figshare (*URL to be added*).
+Primary genotype files available at figshare, <https://doi.org/10.6084/m9.figshare.7359542.v1>
 
 
 ### Files
@@ -30,7 +30,10 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 
 ### Citation
 
-(*Citations needed*)
+Gatti DM, Simecek P, Somes L, Jeffery CT, Vincent MJ, Choi K, Chen X,
+Churchill GA, Svenson KL (2017) The effects of sex and diet on
+physiology and liver gene expression in Diversity Outbred mice.
+bioRxiv [doi:10.1101/098657](https://doi.org/10.1101/098657)
 
 
 
