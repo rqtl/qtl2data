@@ -18,7 +18,7 @@ There is genotype data (at a total of 1260 markers on 5 chromosomes) on
 We don't have a genetic map of the markers, but we do have a physical
 map, in two forms: positions in the "TAIR8 build" were present in the
 Gnan et al. (2014) data (though just for 1024 markers), and positions
-in the "TAIR9 build" are from <> (for 1251 markers).
+in the "TAIR9 build" are from <http://mtweb.cs.ucl.ac.uk> (for 1251 markers).
 
 For related data, see
 <http://mtweb.cs.ucl.ac.uk/mus/www/19genomes/magic.html> and
