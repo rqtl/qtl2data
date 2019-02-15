@@ -49,7 +49,10 @@ the supplementary material from [Kover et al.
 - [`arabmagic_foundergeno.csv`](arabmagic_foundergeno.csv) - the founder genotype data
 - [`arabmagic_geno.csv`](arabmagic_geno.csv) - the MAGIC genotype data
 - [`arabmagic_pheno.csv`](arabmagic_pheno.csv) - the MAGIC phenotype data
-- [`arabmagic_pmap.csv`](arabmagic_pmap.csv) - physical map of the markers
+- [`arabmagic_pmap_tair8.csv`](arabmagic_pmap_tair8.csv) - physical map of
+  the markers with TAIR8 build
+- [`arabmagic_pmap_tair9.csv`](arabmagic_pmap_tair9.csv) - physical map of
+  the markers with TAIR9 build
 - [`arabmagic_tair8.zip`](arabmagic_tair8.zip) - all of the data
   zipped into one file, with the TAIR8 physical map
 - [`arabmagic_tair9.zip`](arabmagic_tair9.zip) - all of the data
