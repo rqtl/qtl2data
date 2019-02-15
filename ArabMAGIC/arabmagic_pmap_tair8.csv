@@ -1,4 +1,4 @@
-# Arabidopsis MAGIC physical map with positions in Mbp, Gnan et al (2014) 10.1534/genetics.114.170746
+# Arabidopsis MAGIC physical map with positions in Mbp (TAIR8 build), Gnan et al (2014) 10.1534/genetics.114.170746
 # nrow 1027
 # ncol 3
 marker,chr,pos

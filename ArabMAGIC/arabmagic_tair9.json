@@ -1,0 +1,19 @@
+{
+  "description": "Arabidopsis MAGIC data, Gnan et al (2014) 10.1534/genetics.114.170746 (TAIR9 physical map)",
+  "crosstype": "magic19",
+  "sep": ",",
+  "na.strings": ["-", "NA"],
+  "comment.char": "#",
+  "geno": "arabmagic_geno.csv",
+  "founder_geno": "arabmagic_foundergeno.csv",
+  "gmap": "arabmagic_pmap_tair9.csv",
+  "pmap": "arabmagic_pmap_tair9.csv",
+  "pheno": "arabmagic_pheno.csv",
+  "genotypes": {
+    "A": 1,
+    "H": 2,
+    "B": 3
+  },
+  "geno_transposed": true,
+  "founder_geno_transposed": true
+}

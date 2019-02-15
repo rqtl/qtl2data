@@ -25,15 +25,6 @@ y <- data.table::fread("../RawData/founder_genotypes.csv", skip=1, data.table=FA
 # marker names as rownames
 rownames(y) <- y[,6]
 
-### Omit markers with missing position
-# omit rows where the bp_pos column is missing
-y <- y[!is.na(y$bp_pos),]
-g <- g[rownames(g) %in% rownames(y),]
-
-
-
-
-
 # determine alleles present at each marker
 alleles <- apply(g, 1, function(a) { u <- unique(a[!is.na(a)]);
     onechar <- u[nchar(u)==1]
@@ -66,27 +57,31 @@ for(i in 1:nrow(fg)) {
 
 
 ##############################
-# Physical map
+# Physical map (TAIR8 version)
 ##############################
 
 bp_pos <- setNames(y$bp_pos, rownames(y))
 chr <- setNames(rep(1, nrow(y)), rownames(y))
 cur_chr <- 1
+last_pos <- bp_pos[1]
 for(i in seq_along(bp_pos)[-1]) {
-    if(bp_pos[i] < bp_pos[i-1]) cur_chr <- cur_chr+1
+    if(!is.na(bp_pos[i]) && bp_pos[i] < last_pos) {
+        cur_chr <- cur_chr+1
+    }
+    if(!is.na(bp_pos[i])) last_pos <- bp_pos[i]
     chr[i] <- cur_chr
 }
 
 # convert to data frame, with marker names as the first column
-map <- data.frame(marker=names(chr),
-                  chr=chr,
-                  pos=bp_pos/1e6,
-                  stringsAsFactors=FALSE)
-rownames(map) <- map$marker
+map_tair8 <- data.frame(marker=names(chr),
+                        chr=chr,
+                        pos=bp_pos/1e6,
+                        stringsAsFactors=FALSE)
+rownames(map_tair8) <- map_tair8$marker
 
 # make sure markers are in the same order
-stopifnot( all(map$marker == rownames(g)) )
-stopifnot( all(map$marker == rownames(fg)) )
+stopifnot( all(map_tair8$marker == rownames(g)) )
+stopifnot( all(map_tair8$marker == rownames(fg)) )
 
 # convert the genotypes to A,H,B where A = most frequent allele in the founders
 minor_allele <- apply(fg, 1, function(a) names(sort(table(a)))[1])
@@ -106,8 +101,8 @@ fgg <- encode_geno(fg, alleles)
 colnames(gg) <- paste0("MAGIC.", colnames(gg))
 
 # write the files
-qtl2convert::write2csv(map, "../arabmagic_pmap.csv",
-                       comment=paste("Arabidopsis MAGIC physical map with positions in Mbp,",
+qtl2convert::write2csv(map_tair8[!is.na(map_tair8$pos), ], "../arabmagic_pmap_tair8.csv",
+                       comment=paste("Arabidopsis MAGIC physical map with positions in Mbp (TAIR8 build),",
                                      "Gnan et al (2014) 10.1534/genetics.114.170746"),
                        overwrite=TRUE)
 
@@ -120,6 +115,39 @@ qtl2convert::write2csv(cbind(marker=rownames(fgg), fgg), "../arabmagic_founderge
                        comment=paste("Arabidopsis MAGIC founder genotype data,",
                                      "Gnan et al (2014) 10.1534/genetics.114.170746"),
                        overwrite=TRUE)
+
+
+##############################
+# TAIR9 map
+##############################
+# Download this from Richard Mott's website, as it provides with TAIR10 genome coordinates
+map_tair9 <- vector("list", 5)
+for(i in 1:5) {
+    url <- paste0("http://mtweb.cs.ucl.ac.uk/mus/www/POOLING/ARABIDOPSIS/FOUNDER/GENOTYPES/chr", i, ".MAGIC.map")
+    local_file <- file.path("..", "RawData", sub("MAGIC", "MAGIC_TAIR9", basename(url)))
+    if(!file.exists(local_file)) {
+        download.file(url, local_file)
+    }
+
+    # Reading data
+    map_tair9[[i]] <- data.table::fread(local_file, data.table = FALSE)
+}
+map_tair9 <- do.call("rbind", map_tair9)
+
+# Retain only relevant columns
+map_tair9 <- map_tair9[, c("marker", "chromosome", "bp")]
+names(map_tair9) <- c("marker", "chr", "pos")
+rownames(map_tair9) <- map_tair9$marker
+map_tair9$pos <- map_tair9$pos/1e6
+
+# retain only common markers
+map_tair9 <- map_tair9[rownames(map_tair9) %in% rownames(g), ]
+
+qtl2convert::write2csv(map_tair9, "../arabmagic_pmap_tair9.csv",
+                       comment=paste("Arabidopsis MAGIC physical map with positions in Mbp (TAIR9 build),",
+                                     "Gnan et al (2014) 10.1534/genetics.114.170746"),
+                       overwrite=TRUE)
+
 
 
 ##############################
@@ -158,15 +186,28 @@ qtl2convert::write2csv(phe, "../arabmagic_pheno.csv",
 ##############################
 
 # control file
-write_control_file("../arabmagic.json",
+write_control_file("../arabmagic_tair8.json",
                    crosstype="magic19",
                    geno_file="arabmagic_geno.csv",
                    founder_geno_file="arabmagic_foundergeno.csv",
                    pheno_file="arabmagic_pheno.csv",
-                   pmap_file="arabmagic_pmap.csv",
-                   gmap_file="arabmagic_pmap.csv", # take physical map also as genetic map
+                   pmap_file="arabmagic_pmap_tair8.csv",
+                   gmap_file="arabmagic_pmap_tair8.csv", # take physical map also as genetic map
                    geno_codes=c(A=1, H=2, B=3),
                    geno_transposed=TRUE,
                    founder_geno_transposed=TRUE,
-                   description="Arabidopsis MAGIC data, Gnan et al (2014) 10.1534/genetics.114.170746",
+                   description="Arabidopsis MAGIC data, Gnan et al (2014) 10.1534/genetics.114.170746 (TAIR8 physical map)",
+                   overwrite=TRUE)
+
+write_control_file("../arabmagic_tair9.json",
+                   crosstype="magic19",
+                   geno_file="arabmagic_geno.csv",
+                   founder_geno_file="arabmagic_foundergeno.csv",
+                   pheno_file="arabmagic_pheno.csv",
+                   pmap_file="arabmagic_pmap_tair9.csv",
+                   gmap_file="arabmagic_pmap_tair9.csv", # take physical map also as genetic map
+                   geno_codes=c(A=1, H=2, B=3),
+                   geno_transposed=TRUE,
+                   founder_geno_transposed=TRUE,
+                   description="Arabidopsis MAGIC data, Gnan et al (2014) 10.1534/genetics.114.170746 (TAIR9 physical map)",
                    overwrite=TRUE)

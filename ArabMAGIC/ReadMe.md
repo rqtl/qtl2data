@@ -12,8 +12,13 @@ The raw data were included as supplements: the genotypes in
 and the phenotypes in
 [File S2](http://www.genetics.org/lookup/suppl/doi:10.1534/genetics.114.170746/-/DC1/genetics.114.170746-3.xls).
 
-There is genotype data (at a total of 1027 markers on 5 chromosomes) on
+There is genotype data (at a total of 1260 markers on 5 chromosomes) on
 703 MAGIC lines. 677 of the lines have phenotype data, for 8 phenotypes.
+
+We don't have a genetic map of the markers, but we do have a physical
+map, in two forms: positions in the "TAIR8 build" were present in the
+Gnan et al. (2014) data (though just for 1024 markers), and positions
+in the "TAIR9 build" are from <> (for 1251 markers).
 
 For related data, see
 <http://mtweb.cs.ucl.ac.uk/mus/www/19genomes/magic.html> and
@@ -37,12 +42,18 @@ the supplementary material from [Kover et al.
 
 ### Files
 
-- [`arabmagic.json`](arabmagic.json) - the JSON control file
+- [`arabmagic_tair8.json`](arabmagic_tair8.json) - the JSON control
+  file, pointing to the TAIR8 physical map
+- [`arabmagic_tair9.json`](arabmagic_tair9.json) - the JSON control
+  file, pointing to the TAIR9 physical map
 - [`arabmagic_foundergeno.csv`](arabmagic_foundergeno.csv) - the founder genotype data
 - [`arabmagic_geno.csv`](arabmagic_geno.csv) - the MAGIC genotype data
 - [`arabmagic_pheno.csv`](arabmagic_pheno.csv) - the MAGIC phenotype data
 - [`arabmagic_pmap.csv`](arabmagic_pmap.csv) - physical map of the markers
-- [`arabmagic.zip`](arabmagic.zip) - all of the data zipped into one file
+- [`arabmagic_tair8.zip`](arabmagic_tair8.zip) - all of the data
+  zipped into one file, with the TAIR8 physical map
+- [`arabmagic_tair9.zip`](arabmagic_tair9.zip) - all of the data
+  zipped into one file, with the TAIR9 physical map
 
 
 
@@ -72,11 +83,12 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 
 ### Use with [R/qtl2](https://kbroman.org/qtl2)
 
-Load these data into R directly from the web as follows:
+Load these data into R directly from the web as follows (for the TAIR9
+version of the physical map; replace 9 with 8 for the TAIR8 version):
 
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/ArabMAGIC/arabmagic.zip")
+               "qtl2data/master/ArabMAGIC/arabmagic_tair9.zip")
 arab <- read_cross2(file)
 ```

@@ -1,9 +1,9 @@
 R_OPTS=--no-save --no-restore --no-init-file --no-site-file
 
-arabmagic.zip: arabmagic.json
-	R -e "qtl2::zip_datafiles('$<', overwrite=TRUE)"
+arabmagic_tair8.zip: R/zip_data.R arabmagic_tair8.json
+	cd R;R $(R_OPTS) -e "source('$(<F)')"
 
-arabmagic.json: R/convert_data.R \
+arabmagic_tair8.json: R/convert_data.R \
 				RawData/phenotypes.csv \
 				RawData/magic_genotypes.csv \
 				RawData/founder_genotypes.csv
