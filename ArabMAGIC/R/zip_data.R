@@ -32,4 +32,4 @@ for(build in c(8, 9)) {
     file.copy(file.path(tmpdir, sub(".json", ".zip", json_file)), "..")
 }
 
-unlink(file.path(tmpdir, list.files(tmpdir)))
+unlink(tmpdir, recursive=TRUE)
