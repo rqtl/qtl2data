@@ -22,12 +22,12 @@ We'll use the following:
   - contains a `.csv.gz` file for each strain which has marker,
     chromosome, build38 bp position, and then the 36 genotypes
 
-
-Also of interest:
-
 - `SupplementalData.zip`
 
   - contains `CCStrains.csv` with columns `Strain`, `N_Founders`, `ChrY`, `Mitochondria`
+
+
+Also of interest:
 
 - `GigaHaps.zip`, `MRCAsHaps.zip`, `SeqHaps.zip`
 

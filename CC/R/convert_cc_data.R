@@ -8,18 +8,15 @@
 # required libraries
 library(data.table)
 library(qtl2)
+library(qtl2convert)
 library(broman)
 set.seed(83763628)
 
 
 # create RawData/ and Data/ if they're not available
 rawdata_dir = "../RawData"
-data_dir = "../Data"
 if(!dir.exists(rawdata_dir)) {
     dir.create(rawdata_dir)
-}
-if(!dir.exists(data_dir)) {
-    dir.create(data_dir)
 }
 
 # download genotypes.zip if not available
@@ -109,7 +106,7 @@ stopifnot( all( paste0(sub("/", "-", ccstrains$Strain, fixed=TRUE), "b38V01") ==
 
 # determine cross orders
 cross_info <- matrix(ncol=8, nrow=length(strains))
-rownames(cross_info) <- ccstrains$Strain
+dimnames(cross_info) <- list(ccstrains$Strain, LETTERS[1:8])
 cross_info[,1] <- match(ccstrains$Mitochondria, LETTERS[1:8])
 cross_info[,8] <- match(ccstrains$ChrY, LETTERS[1:8])
 
@@ -156,4 +153,25 @@ for(i in 1:nrow(cross_info)) {
 
 all(apply(cross_info, 1, sort) == 1:8)
 
-# get the founder genotypes for MMnGM markers
+# write the cross information to a file
+write2csv(cbind(id=rownames(cross_info), cross_info),
+          "../cc_crossinfo.csv",
+          comment=paste("Cross information for Collaborative Cross (CC) lines inferred from",
+                        "genotypes from Srivastava et al. (2017)",
+                        "doi:10.1534/genetics.116.198838,",
+                        "data at doi:10.5281/zenodo.377036"),
+          overwrite=TRUE)
+
+
+# write covariate info with M and Y as inferred
+covar <- data.frame(id=rownames(cross_info),
+                    mitochondria=LETTERS[cross_info[,1]],
+                    Ychr=LETTERS[cross_info[,8]],
+                    stringsAsFactors=FALSE)
+
+write2csv(covar, "../cc_covar.csv",
+          comment=paste("Covariate information for Collaborative Cross (CC) lines inferred from",
+                        "genotypes from Srivastava et al. (2017)",
+                        "doi:10.1534/genetics.116.198838,",
+                        "data at doi:10.5281/zenodo.377036"),
+          overwrite=TRUE)
