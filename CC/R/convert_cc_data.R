@@ -5,6 +5,12 @@
 #
 # available at Zenodo, doi:10.5281/zenodo.377036
 
+# required libraries
+library(data.table)
+library(qtl2)
+library(broman)
+set.seed(83763628)
+
 
 # create RawData/ and Data/ if they're not available
 rawdata_dir = "../RawData"
@@ -78,5 +84,76 @@ for(i in seq_along(files)) {
 }
 
 # guess the rest of the cross order
+mprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="M", paste0(LETTERS, LETTERS)[1:8]])))
+yprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="Y", paste0(LETTERS, LETTERS)[1:8]])))
+xprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="X", paste0(LETTERS, LETTERS)[1:8]])))
+# a bunch where we can't tell Y or M
+
+# also need the supplementary data file
+supp_file = "SupplementalData.zip"
+distant_file = paste0(zenodo_url, supp_file, zenodo_postpend)
+local_file = file.path(rawdata_dir, supp_file)
+if(!file.exists(local_file)) {
+    download.file(distant_file, local_file)
+}
+
+# extract just the CCStrains.csv file
+csv_file <- "SupplmentalData/CCStrains.csv"
+unzip(local_file, csv_file, exdir=rawdata_dir)
+csv_file <- file.path(rawdata_dir, csv_file)
+ccstrains <- data.table::fread(csv_file, data.table=FALSE)
+
+# check that the strain names are the same
+stopifnot( all( paste0(sub("/", "-", ccstrains$Strain, fixed=TRUE), "b38V01") ==
+                strains))
+
+# determine cross orders
+cross_info <- matrix(ncol=8, nrow=length(strains))
+rownames(cross_info) <- ccstrains$Strain
+cross_info[,1] <- match(ccstrains$Mitochondria, LETTERS[1:8])
+cross_info[,8] <- match(ccstrains$ChrY, LETTERS[1:8])
+
+# problems: CC013, CC023, CC027
+# CC013 M = Y = E [genotypes say Y could be B or C, too] --- change Y to B
+# CC023 M = Y = A [genotypes say M could be D] -- change M to D
+# CC027 M = Y = B [but genotypes say M is F] -- change M to F
+
+cross_info["CC013/GeniUnc", 8] <- 2
+cross_info["CC023/GeniUnc", 1] <- 4
+cross_info["CC027/GeniUnc", 1] <- 6
+
+# swap any cases where mitochondrial genotypes are clearly different
+max_mprob <- apply(mprob, 1, max)
+wh_mprob <- apply(mprob, 1, which.max)
+cross_info[max_mprob > 0.9,1] <- wh_mprob[max_mprob > 0.9]
+
+stopifnot( all( cross_info[,1] != cross_info[,8] ))
+
+# are there any obvious differences?
+
+# mitochondria
+stopifnot( all( sort(max_mprob[wh_mprob != cross_info[,1]]) < 0.5))
+
+# now the Y chr
+max_yprob <- apply(yprob, 1, max)
+wh_yprob <- apply(yprob, 1, which.max)
+stopifnot( all( sort(max_yprob[wh_yprob != cross_info[,8]]) < 0.5))
+
+# founders with largest X chr probabilities
+wh_xprob <- t(apply(xprob, 1, order, decreasing=TRUE))
+
+# most common X chr genotype that's not the mtDNA one in the 3rd slot
+cross_info[,3] <- wh_xprob[,1]
+swap <- cross_info[,1] == cross_info[,3]
+cross_info[swap, 3] <- wh_xprob[swap, 2]
+
+# sort other X chr probs...put three most probable in the 2nd, 5th, and 6th slots
+for(i in 1:nrow(cross_info)) {
+    z <- (wh_xprob[i, ] %wnin% cross_info[i, c(1,3,8)])
+    cross_info[i, c(2,5,6)] <- sample(z[1:3])
+    cross_info[i, c(4,7)] <- sample(z[4:5])
+}
+
+all(apply(cross_info, 1, sort) == 1:8)
 
 # get the founder genotypes for MMnGM markers
