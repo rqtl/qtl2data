@@ -27,13 +27,10 @@ We'll use the following:
   - contains `CCStrains.csv` with columns `Strain`, `N_Founders`, `ChrY`, `Mitochondria`
 
 
-Also of interest:
+The founder genotypes are from FigShare
+([doi:10.6084/m9.figshare.5404762.v2](https://doi.org/10.6084/m9.figshare.5404762.v2))
+and combine markers from the MegaMUGA and the GigaMUGA arrays.
 
-- `GigaHaps.zip`, `MRCAsHaps.zip`, `SeqHaps.zip`
-
-   - A `.hap` file for each strain which is a CSV file with some
-     header information and then two rows for each chromosome with
-     alleles and locations of breakpoints
 
 The script [`R/convert_cc_data.R`](R/convert_cc_data.R) both downloads
 and converts the data into a form useful for R/qtl2.
