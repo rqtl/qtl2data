@@ -1,0 +1,23 @@
+{
+  "description": "Data for Collaborative Cross (CC) lines from Srivastava et al. (2017) doi:10.1534/genetics.116.198838, data at doi:10.5281/zenodo.377036",
+  "crosstype": "risib8",
+  "sep": ",",
+  "na.strings": ["-", "NA"],
+  "comment.char": "#",
+  "geno": ["cc_geno1.csv", "cc_geno2.csv", "cc_geno3.csv", "cc_geno4.csv", "cc_geno5.csv", "cc_geno6.csv", "cc_geno7.csv", "cc_geno8.csv", "cc_geno9.csv", "cc_geno10.csv", "cc_geno11.csv", "cc_geno12.csv", "cc_geno13.csv", "cc_geno14.csv", "cc_geno15.csv", "cc_geno16.csv", "cc_geno17.csv", "cc_geno18.csv", "cc_geno19.csv", "cc_genoX.csv"],
+  "founder_geno": ["MMnGM/MMnGM_foundergeno1.csv", "MMnGM/MMnGM_foundergeno2.csv", "MMnGM/MMnGM_foundergeno3.csv", "MMnGM/MMnGM_foundergeno4.csv", "MMnGM/MMnGM_foundergeno5.csv", "MMnGM/MMnGM_foundergeno6.csv", "MMnGM/MMnGM_foundergeno7.csv", "MMnGM/MMnGM_foundergeno8.csv", "MMnGM/MMnGM_foundergeno9.csv", "MMnGM/MMnGM_foundergeno10.csv", "MMnGM/MMnGM_foundergeno11.csv", "MMnGM/MMnGM_foundergeno12.csv", "MMnGM/MMnGM_foundergeno13.csv", "MMnGM/MMnGM_foundergeno14.csv", "MMnGM/MMnGM_foundergeno15.csv", "MMnGM/MMnGM_foundergeno16.csv", "MMnGM/MMnGM_foundergeno17.csv", "MMnGM/MMnGM_foundergeno18.csv", "MMnGM/MMnGM_foundergeno19.csv", "MMnGM/MMnGM_foundergenoX.csv"],
+  "gmap": ["MMnGM/MMnGM_gmap1.csv", "MMnGM/MMnGM_gmap2.csv", "MMnGM/MMnGM_gmap3.csv", "MMnGM/MMnGM_gmap4.csv", "MMnGM/MMnGM_gmap5.csv", "MMnGM/MMnGM_gmap6.csv", "MMnGM/MMnGM_gmap7.csv", "MMnGM/MMnGM_gmap8.csv", "MMnGM/MMnGM_gmap9.csv", "MMnGM/MMnGM_gmap10.csv", "MMnGM/MMnGM_gmap11.csv", "MMnGM/MMnGM_gmap12.csv", "MMnGM/MMnGM_gmap13.csv", "MMnGM/MMnGM_gmap14.csv", "MMnGM/MMnGM_gmap15.csv", "MMnGM/MMnGM_gmap16.csv", "MMnGM/MMnGM_gmap17.csv", "MMnGM/MMnGM_gmap18.csv", "MMnGM/MMnGM_gmap19.csv", "MMnGM/MMnGM_gmapX.csv"],
+  "pmap": ["MMnGM/MMnGM_pmap1.csv", "MMnGM/MMnGM_pmap2.csv", "MMnGM/MMnGM_pmap3.csv", "MMnGM/MMnGM_pmap4.csv", "MMnGM/MMnGM_pmap5.csv", "MMnGM/MMnGM_pmap6.csv", "MMnGM/MMnGM_pmap7.csv", "MMnGM/MMnGM_pmap8.csv", "MMnGM/MMnGM_pmap9.csv", "MMnGM/MMnGM_pmap10.csv", "MMnGM/MMnGM_pmap11.csv", "MMnGM/MMnGM_pmap12.csv", "MMnGM/MMnGM_pmap13.csv", "MMnGM/MMnGM_pmap14.csv", "MMnGM/MMnGM_pmap15.csv", "MMnGM/MMnGM_pmap16.csv", "MMnGM/MMnGM_pmap17.csv", "MMnGM/MMnGM_pmap18.csv", "MMnGM/MMnGM_pmap19.csv", "MMnGM/MMnGM_pmapX.csv"],
+  "covar": "cc_covar.csv",
+  "alleles": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "x_chr": "X",
+  "genotypes": {
+    "A": 1,
+    "B": 3
+  },
+  "geno_transposed": true,
+  "founder_geno_transposed": true,
+  "cross_info": {
+    "file": "cc_crossinfo.csv"
+  }
+}
