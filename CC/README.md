@@ -8,7 +8,12 @@ Srivastava et al. (2017) Genomes of the Mouse Collaborative Cross. Genetics 206:
 The supplementary data is at Zenodo,
 [doi:10.5281/zenodo.377036](https://doi.org/10.5281/zenodo.377036).
 
-We'll use the following:
+**Warning**: There are some problems here, for example the published
+data suggest that CC037 has Y chromosome and a significant portion of
+the X chromosome from the parental strain NOD (D), but the way R/qtl2
+currently handles these 8-way RIL data, this is not possible.
+
+We've used the following:
 
 - `genotypes.zip`
 
