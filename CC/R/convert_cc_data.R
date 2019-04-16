@@ -14,7 +14,7 @@ set.seed(83763628)
 
 
 # create RawData/ and Data/ if they're not available
-rawdata_dir = "../RawData"
+rawdata_dir <- "../RawData"
 if(!dir.exists(rawdata_dir)) {
     dir.create(rawdata_dir)
 }
@@ -22,23 +22,25 @@ if(!dir.exists(rawdata_dir)) {
 
 
 # download Prob36.zip if not available
-prob_file = "Prob36.zip"
-distant_file = paste0(zenodo_url, prob_file, zenodo_postpend)
-local_file = file.path(rawdata_dir, prob_file)
+zenodo_url <- "https://zenodo.org/record/377036/files/"
+zenodo_postpend <- "?download=1"
+prob_file <- "Prob36.zip"
+distant_file <- paste0(zenodo_url, prob_file, zenodo_postpend)
+local_file <- file.path(rawdata_dir, prob_file)
 if(!file.exists(local_file)) {
     message("Downloading Prob36.zip")
     download.file(distant_file, local_file)
 }
 
 # create directory for data if it doesn't exist
-prob_dir = file.path(rawdata_dir, "Prob36")
+prob_dir <- file.path(rawdata_dir, "Prob36")
 if(!dir.exists(prob_dir)) {
     dir.create(prob_dir)
 }
 
 # unzip if it hasn't been unzipped
-gzfile = file.path(prob_dir, "CC001-Uncb38V01.csv.gz")
-csvfile = file.path(prob_dir, "CC001-Uncb38V01.csv")
+gzfile <- file.path(prob_dir, "CC001-Uncb38V01.csv.gz")
+csvfile <- file.path(prob_dir, "CC001-Uncb38V01.csv")
 if(!file.exists(gzfile) && !file.exists(csvfile)) {
     message("unzipping Prob36.zip")
     unzip(local_file, exdir=prob_dir)
@@ -72,16 +74,20 @@ xprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="X", paste0(LETTERS, LETT
 # a bunch where we can't tell Y or M
 
 # also need the supplementary data file
-supp_file = "SupplementalData.zip"
-distant_file = paste0(zenodo_url, supp_file, zenodo_postpend)
-local_file = file.path(rawdata_dir, supp_file)
+supp_file <- "SupplementalData.zip"
+distant_file <- paste0(zenodo_url, supp_file, zenodo_postpend)
+local_file <- file.path(rawdata_dir, supp_file)
 if(!file.exists(local_file)) {
+    message("downloading SupplementalData.zip")
     download.file(distant_file, local_file)
 }
 
 # extract just the CCStrains.csv file
 csv_file <- "SupplmentalData/CCStrains.csv"
-unzip(local_file, csv_file, exdir=rawdata_dir)
+if(!file.exists(csv_file)) {
+    message("unzipping SupplementalData.zip")
+    unzip(local_file, csv_file, exdir=rawdata_dir)
+}
 csv_file <- file.path(rawdata_dir, csv_file)
 ccstrains <- data.table::fread(csv_file, data.table=FALSE)
 
@@ -164,27 +170,31 @@ write2csv(covar, "../cc_covar.csv",
           overwrite=TRUE)
 
 # download genotypes.zip if not available
-zenodo_url = "https://zenodo.org/record/377036/files/"
-zenodo_postpend = "?download=1"
-genotype_file = "genotypes.zip"
-distant_file = paste0(zenodo_url, genotype_file, zenodo_postpend)
-local_file = file.path(rawdata_dir, genotype_file)
+genotype_file <- "genotypes.zip"
+distant_file <- paste0(zenodo_url, genotype_file, zenodo_postpend)
+local_file <- file.path(rawdata_dir, genotype_file)
 if(!file.exists(local_file)) {
     message("downloading genotypes.zip")
     download.file(distant_file, local_file)
 }
 
 # create directory for data if it doesn't exist
-genotype_dir = file.path(rawdata_dir, "genotypes")
+genotype_dir <- file.path(rawdata_dir, "genotypes")
 if(!dir.exists(genotype_dir)) {
     dir.create(genotype_dir)
 }
 
 # unzip if it hasn't been unzipped
-file = file.path(genotype_dir, "SEQgenotypes.csv")
+file <- file.path(genotype_dir, "SEQgenotypes.csv")
 if(!file.exists(file)) {
+    message("unzipping genotypes")
     unzip(local_file, exdir=genotype_dir)
 }
+
+# read genotypes
+message("reading genotypes")
+g <- data.table::fread(file, data.table=FALSE)
+g[g=="N" | g=="H"] <- NA
 
 
 # founder genotypes from figshare
@@ -195,3 +205,70 @@ if(!file.exists(local_file)) {
     message("downloading founder genotypes")
     download.file(fg_url, local_file)
 }
+
+# unzip the founder genotype data
+if(!file.exists(file.path("..", "MMnGM", "MMnGM_info.csv"))) {
+    message("unzipping founder genotypes")
+    unzip(local_file, exdir="..")
+}
+
+# load the allele codes
+fga <- read_csv(file.path("..", "MMnGM", "MMnGM_allelecodes.csv"))
+fga <- fga[fga$chr %in% c(1:19,"X"),]
+
+# omit markers not in founder genotypes
+g <- g[g$marker %in% rownames(fga),]
+fga <- fga[rownames(fga) %in% g$marker,]
+
+# reorder rows of genotype data to match fga
+g <- g[match(g$marker, rownames(fga)),]
+
+# cut down to just the genotypes
+rownames(g) <- g[,1]
+g <- g[,-(1:3)]
+
+# strip off individual IDs from column names
+colnames(g) <- paste0(sapply(strsplit(colnames(g), "Unc"), "[", 1), "Unc")
+stopifnot( all( colnames(g) == ccstrains$Strain ))
+
+# encode genotypes
+message("encoding genotypes")
+g <- encode_geno(g, fga[,c("A","B")], cores=0)
+
+# omit markers with no data
+g <- g[rowSums(g!="-") > 0, , drop=FALSE]
+
+# write genotypes to files, one chromosome at a time
+message("writing genotypes")
+for(chr in c(1:19,"X")) {
+    file <- paste0("../cc_geno", chr, ".csv")
+    gsub <- g[rownames(g) %in% rownames(fga)[fga$chr==chr], , drop=FALSE]
+    write2csv(cbind(marker=rownames(gsub), gsub), file,
+              overwrite=TRUE,
+              comment=paste("Chromosome", chr, "genotypes",
+                        "for Collaborative Cross (CC) lines inferred from",
+                        "genotypes from Srivastava et al. (2017)",
+                        "doi:10.1534/genetics.116.198838,",
+                        "data at doi:10.5281/zenodo.377036"))
+}
+
+# create JSON file
+chr <- c(1:19,"X")
+message("Write control file")
+write_control_file("../cc.json", crosstype="risib8",
+                   geno_file=paste0("cc_geno", chr, ".csv"),
+                   founder_geno_file=paste0("MMnGM/MMnGM_foundergeno", chr, ".csv"),
+                   gmap_file=paste0("MMnGM/MMnGM_gmap", chr, ".csv"),
+                   pmap_file=paste0("MMnGM/MMnGM_pmap", chr, ".csv"),
+                   covar_file="cc_covar.csv",
+                   crossinfo_file="cc_crossinfo.csv",
+                   geno_codes=c("A"=1, "B"=3),
+                   alleles=LETTERS[1:8],
+                   xchr="X",
+                   geno_transposed=TRUE,
+                   founder_geno_transposed=TRUE,
+                   description=paste("Data for Collaborative Cross (CC) lines",
+                                     "from Srivastava et al. (2017)",
+                                     "doi:10.1534/genetics.116.198838,",
+                                     "data at doi:10.5281/zenodo.377036"),
+                   overwrite=TRUE)
