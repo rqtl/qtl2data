@@ -13,7 +13,7 @@ library(broman)
 set.seed(83763628)
 
 
-# create RawData/ and Data/ if they're not available
+# create RawData/ if not available
 rawdata_dir <- "../RawData"
 if(!dir.exists(rawdata_dir)) {
     dir.create(rawdata_dir)
