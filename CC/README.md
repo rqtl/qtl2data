@@ -8,13 +8,6 @@ Srivastava et al. (2017) Genomes of the Mouse Collaborative Cross. Genetics 206:
 The supplementary data is at Zenodo,
 [doi:10.5281/zenodo.377036](https://doi.org/10.5281/zenodo.377036).
 
-**Warning**: There are some problems here, for example the published
-data suggest that CC037 has Y chromosome and a significant portion of
-the X chromosome from the parental strain NOD (D), but the way R/qtl2
-currently handles these 8-way RIL data, this is not possible.
-There are two other strains with similar problems on the X chromosome:
-CC031 and CC056.
-
 We've used the following:
 
 - `genotypes.zip`
@@ -34,13 +27,20 @@ We've used the following:
   - contains `CCStrains.csv` with columns `Strain`, `N_Founders`, `ChrY`, `Mitochondria`
 
 
+**Note**: Three strains (CC031, CC037, and CC056) have some problems
+where the founder that contributed their Y chromosome is also present
+on their X chromosome. This is not supposed to happen, and is
+inconsistent with the way R/qtl2 handles 8-way RIL data. So we've
+fudged the cross information for these strains so that the X
+chromosome genotype probabilities won't be messed up.
+
 The founder genotypes are from FigShare
 ([doi:10.6084/m9.figshare.5404762.v2](https://doi.org/10.6084/m9.figshare.5404762.v2))
-and combine markers from the MegaMUGA and the GigaMUGA arrays.
+and combine markers from the MegaMUGA and the GigaMUGA arrays. We use
+the array annotation information from <https://github.com/kbroman/MUGAarrays>.
 
 The script [`R/convert_cc_data.R`](R/convert_cc_data.R) both downloads
 and converts the data into a form useful for R/qtl2.
-
 
 
 ### File format
