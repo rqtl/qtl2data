@@ -11,6 +11,7 @@ library(qtl2convert)
 prob_dir <- "../RawData/Prob36"
 files <- list.files(prob_dir, pattern=".csv$")
 strains <- sub("b38V01.csv$", "", files)
+strains <- sub("-", "/", strains, fixed=TRUE)
 
 message("Reading probabilities")
 v <- lapply(files, function(file) data.table::fread(file.path(prob_dir, file),
