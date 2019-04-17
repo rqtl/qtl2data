@@ -142,6 +142,17 @@ for(i in 1:nrow(cross_info)) {
     cross_info[i, c(4,7)] <- sample(z[4:5])
 }
 
+# further problems:
+# CC031 Y chr is B but this is clearly on the X chromosome
+# CC037 Y chr is D but this is clearly on the X chromosome
+# CC056 Y chr is E but this is clearly on the X chromosome
+# ... swap these with one of 2,5,6
+
+swap_with <- c(6, 2, 5)
+cross_info["CC031/GeniUnc", c(swap_with[1], 8)] <- cross_info["CC031/GeniUnc", c(8, swap_with[1])]
+cross_info["CC037/TauUnc", c(swap_with[2], 8)] <- cross_info["CC037/TauUnc", c(8, swap_with[2])]
+cross_info["CC056/GeniUnc", c(swap_with[3], 8)] <- cross_info["CC056/GeniUnc", c(8, swap_with[3])]
+
 all(apply(cross_info, 1, sort) == 1:8)
 
 message("writing cross and covariate data")
@@ -158,8 +169,10 @@ write2csv(cbind(id=rownames(cross_info), cross_info),
 
 # write covariate info with M and Y as inferred
 covar <- data.frame(id=rownames(cross_info),
-                    mitochondria=LETTERS[cross_info[,1]],
-                    Ychr=LETTERS[cross_info[,8]],
+                    mitochondria=ccstrains$Mitochondria,
+                    Ychr=ccstrains$ChrY,
+                    n_founders=ccstrains$N_Founders,
+                    origin=ccstrains$Origin,
                     stringsAsFactors=FALSE)
 
 write2csv(covar, "../cc_covar.csv",
@@ -272,3 +285,7 @@ write_control_file("../cc.json", crosstype="risib8",
                                      "doi:10.1534/genetics.116.198838,",
                                      "data at doi:10.5281/zenodo.377036"),
                    overwrite=TRUE)
+
+# create zip file
+message("Create zip file")
+zip_datafiles("../cc.json", overwrite=TRUE)
