@@ -189,10 +189,10 @@ write2csv(cbind(id=rownames(cross_info), cross_info),
 
 # write covariate info with M and Y as inferred
 covar <- data.frame(id=rownames(cross_info),
-                    mitochondria=ccstrains$Mitochondria,
-                    Ychr=ccstrains$ChrY,
-                    n_founders=ccstrains$N_Founders,
-                    origin=ccstrains$Origin,
+                    mitochondria=tab$Mitochondria,
+                    Ychr=tab[,"Chromosome Y"],
+                    n_founders=tab[,"# of Founders"],
+                    origin=tab[,"Origin of Strain"],
                     stringsAsFactors=FALSE)
 
 write2csv(covar, "../cc_covar.csv",
