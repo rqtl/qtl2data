@@ -10,6 +10,7 @@ library(data.table)
 library(qtl2)
 library(qtl2convert)
 library(broman)
+library(readxl)
 set.seed(83763628)
 
 
@@ -66,7 +67,9 @@ for(i in seq_along(files)) {
     probs[[i]] <- data.table::fread(file.path(prob_dir, files[i]), data.table=FALSE)
 }
 
+##############################
 # guess the rest of the cross order
+##############################
 message("inferring cross order")
 mprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="M", paste0(LETTERS, LETTERS)[1:8]])))
 yprob <- t(sapply(probs, function(a) colMeans(a[a[,2]=="Y", paste0(LETTERS, LETTERS)[1:8]])))
@@ -95,25 +98,44 @@ ccstrains <- data.table::fread(csv_file, data.table=FALSE)
 stopifnot( all( paste0(sub("/", "-", ccstrains$Strain, fixed=TRUE), "b38V01") ==
                 strains))
 
-# determine cross orders
+# download table S2
+url <- "http://www.genetics.org/highwire/filestream/438137/field_highwire_adjunct_files/10/TableS2.xlsx"
+file <- basename(url)
+local_file <- file.path("..", "RawData", file)
+if(!file.exists(local_file)) {
+    download.file(url, local_file)
+}
+tab <- as.data.frame(readxl::read_xlsx(local_file))
+
+# check that the strain names are the same
+stopifnot( all( paste0(sub("/", "-", tab$Strain, fixed=TRUE), "b38V01") ==
+                strains))
+
+funnel <- tab[,"Funnel Code"]
+mtdna <- tab[,"Mitochondria"]
+ychr <- tab[,"Chromosome Y"]
+
+# determine cross orders; use orders in Table S2 when available
 cross_info <- matrix(ncol=8, nrow=length(strains))
 dimnames(cross_info) <- list(ccstrains$Strain, LETTERS[1:8])
-cross_info[,1] <- match(ccstrains$Mitochondria, LETTERS[1:8])
-cross_info[,8] <- match(ccstrains$ChrY, LETTERS[1:8])
+for(i in which(!is.na(funnel))) {
+    cross_info[i,] <- match(unlist(strsplit(funnel[i], "")), LETTERS)
+}
+
+# when not available, use the values in table S2
+use_mtdna <- mtdna; use_mtdna[mtdna=="A/D" | mtdna=="D/A"] <- "A" # use A when A/D or D/A
+cross_info[is.na(cross_info[,1]),1] <- match(use_mtdna, LETTERS[1:8])[is.na(cross_info[,1])]
+cross_info[is.na(cross_info[,8]),8] <- match(ychr, LETTERS[1:8])[is.na(cross_info[,8])]
 
 # problems: CC013, CC023, CC027
 # CC013 M = Y = E [genotypes say Y could be B or C, too] --- change Y to B
-# CC023 M = Y = A [genotypes say M could be D] -- change M to D
-# CC027 M = Y = B [but genotypes say M is F] -- change M to F
 
 cross_info["CC013/GeniUnc", 8] <- 2
-cross_info["CC023/GeniUnc", 1] <- 4
-cross_info["CC027/GeniUnc", 1] <- 6
 
-# swap any cases where mitochondrial genotypes are clearly different
+# check cases where mitochondrial genotype is clear
 max_mprob <- apply(mprob, 1, max)
 wh_mprob <- apply(mprob, 1, which.max)
-cross_info[max_mprob > 0.9,1] <- wh_mprob[max_mprob > 0.9]
+stopifnot( all(cross_info[max_mprob>0.9,1] == wh_mprob[max_mprob > 0.9]) )
 
 stopifnot( all( cross_info[,1] != cross_info[,8] ))
 
@@ -131,12 +153,11 @@ stopifnot( all( sort(max_yprob[wh_yprob != cross_info[,8]]) < 0.5))
 wh_xprob <- t(apply(xprob, 1, order, decreasing=TRUE))
 
 # most common X chr genotype that's not the mtDNA one in the 3rd slot
-cross_info[,3] <- wh_xprob[,1]
-swap <- cross_info[,1] == cross_info[,3]
-cross_info[swap, 3] <- wh_xprob[swap, 2]
+cross_info[is.na(cross_info[,3]),3] <- wh_xprob[is.na(cross_info[,3]),1]
+stopifnot( all(cross_info[,1] != cross_info[,3]) )
 
 # sort other X chr probs...put three most probable in the 2nd, 5th, and 6th slots
-for(i in 1:nrow(cross_info)) {
+for(i in which(is.na(cross_info[,2]))) {
     z <- (wh_xprob[i, ] %wnin% cross_info[i, c(1,3,8)])
     cross_info[i, c(2,5,6)] <- sample(z[1:3])
     cross_info[i, c(4,7)] <- sample(z[4:5])
@@ -148,12 +169,11 @@ for(i in 1:nrow(cross_info)) {
 # CC056 Y chr is E but this is clearly on the X chromosome
 # ... swap these with one of 2,5,6
 
-swap_with <- c(6, 2, 5)
-cross_info["CC031/GeniUnc", c(swap_with[1], 8)] <- cross_info["CC031/GeniUnc", c(8, swap_with[1])]
-cross_info["CC037/TauUnc", c(swap_with[2], 8)] <- cross_info["CC037/TauUnc", c(8, swap_with[2])]
-cross_info["CC056/GeniUnc", c(swap_with[3], 8)] <- cross_info["CC056/GeniUnc", c(8, swap_with[3])]
+cross_info["CC031/GeniUnc", ] <- c(1,6,5,3,7,2,4,8)
+cross_info["CC037/TauUnc", ] <- c(3,4,8,7,6,1,5,2)
+cross_info["CC056/GeniUnc", ] <- c(3,8,1,7,5,4,6,2)
 
-all(apply(cross_info, 1, sort) == 1:8)
+stopifnot( all(apply(cross_info, 1, sort) == 1:8) )
 
 message("writing cross and covariate data")
 
