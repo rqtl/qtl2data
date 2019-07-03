@@ -11,7 +11,7 @@ diabetes. Taken from
 
 ### Files
 
-- [`b6btbr.json`](b6btbr.json), the control file ([JSON format](http://www.json.org/))
+- [`b6btbr.json`](b6btbr.json), the control file ([JSON format](https://json.org))
 - [`b6btbr_geno.csv`](b6btbr_geno.csv), genotype data
 - [`b6btbr_gmap.csv`](b6btbr_gmap.csv), genetic map
 - [`b6btbr_pmap.csv`](b6btbr_pmap.csv), physical map
