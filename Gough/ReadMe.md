@@ -17,7 +17,7 @@ Also available at the
 
 ### Files
 
-- [`gough.json`](gough.json), the control file ([JSON format](https://json.org/))
+- [`gough.json`](gough.json), the control file ([JSON format](https://json.org))
 - [`gough_geno.csv`](gough_geno.csv), genotype data
 - [`gough_gmap.csv`](gough_gmap.csv), genetic map
 - [`gough_pmap.csv`](gough_pmap.csv), physical map
