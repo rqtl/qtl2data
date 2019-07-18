@@ -1,20 +1,23 @@
 {
   "description": "BXD mouse data from GeneNetwork",
   "crosstype": "risib",
+  "sep": ",",
+  "na.strings": ["-", "NA"],
+  "comment.char": "#",
   "geno": "bxd_geno.csv",
-  "geno_transposed": true,
+  "gmap": "bxd_gmap.csv",
+  "pmap": "bxd_pmap.csv",
+  "pheno": "bxd_pheno.csv",
+  "phenocovar": "bxd_phenocovar.csv",
+  "alleles": ["B", "D"],
+  "x_chr": "X",
   "genotypes": {
     "B": 1,
     "D": 2
   },
-  "x_chr": "X",
-  "gmap": "bxd_gmap.csv",
-  "pmap": "bxd_pmap.csv",
-  "alleles": ["B","D"],
+  "geno_transposed": true,
   "cross_info": {
-        "file": "bxd_crossinfo.csv",
-        "BxD": 0
-  },
-  "pheno": "bxd_pheno.csv",
-  "phenocovar": "bxd_phenocovar.csv"
+    "file": "bxd_crossinfo.csv",
+    "BxD": 0
+  }
 }
