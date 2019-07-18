@@ -126,6 +126,7 @@ write_control_file("../bxd.json",
                    pheno_file="bxd_pheno.csv",
                    phenocovar_file="bxd_phenocovar.csv",
                    crossinfo_file = "bxd_crossinfo.csv",
+                   crossinfo_codes = c("BxD"=0),
                    alleles=c("B", "D"),
                    overwrite=TRUE)
 
