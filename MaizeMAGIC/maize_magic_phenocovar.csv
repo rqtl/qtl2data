@@ -1,0 +1,8 @@
+# Phenotype covariates for Maize MAGIC from Dell'acqua et al (2015) doi:10.1186/s13059-015-0716-z
+# nrow 4
+# ncol 2
+pheno,description
+PS,pollen shed
+PH,plant height
+EH,ear height
+GYrad,transformed grain yield
