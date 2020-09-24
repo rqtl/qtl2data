@@ -1,4 +1,4 @@
-# download the raw data files for Dell'acqua et al (2015)
+# download the raw data files for Dell'Acqua et al (2015)
 
 library(here)
 

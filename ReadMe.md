@@ -36,7 +36,7 @@ Example data sets for [R/qtl2](https://kbroman.org/qtl2).
   [GeneNetwork](http://gn2.genenetwork.org).
 
 - [`MaizeMAGIC`](MaizeMAGIC) - Data on maize MAGIC lines, from
-  [Dell'acqua et al. (2015) Genome Biol. 16:1-23](https://doi.org/10.1186/s13059-015-0716-z)
+  [Dell'Acqua et al. (2015) Genome Biol. 16:167](https://doi.org/10.1186/s13059-015-0716-z)
 
 Also see the
 [vignette on input file formats](https://kbroman.org/qtl2/assets/vignettes/input_files.html)

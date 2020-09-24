@@ -6,9 +6,9 @@ between a pair of founders.
 
 ### Source
 
-Dell'acqua et al. (2015) Genetic properties of the MAGIC maize
+Dell'Acqua et al. (2015) Genetic properties of the MAGIC maize
 population: a new platform for high definition QTL mapping in _Zea
-mays_. Genome Biol. 16:1-23
+mays_. Genome Biol. 16:167
 [doi:10.1186/s13059-015-0716-z](https://doi.org/10.1186/s13059-015-0716-z)
 
 The raw data are available as supplemental tables and at Figshare:
@@ -65,7 +65,7 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 
 Dell’Acqua M, et al. (2015) Genetic properties of the MAGIC maize
 population: a new platform for high definition QTL mapping in _Zea
-mays_. Genome Biol. 16:1-23
+mays_. Genome Biol. 16:167
 [doi:10.1186/s13059-015-0716-z](https://doi.org/10.1186/s13059-015-0716-z)
 
 

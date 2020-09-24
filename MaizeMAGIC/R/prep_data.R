@@ -137,7 +137,7 @@ full_crossinfo <- cbind(ngen=4, full_crossinfo)
 # write data
 ##############################
 
-description <- "Maize MAGIC from Dell'acqua et al (2015) doi:10.1186/s13059-015-0716-z"
+description <- "Maize MAGIC from Dell'Acqua et al (2015) doi:10.1186/s13059-015-0716-z"
 
 ## write maps
 write2csv(pmap, here("maize_magic_pmap.csv"),
