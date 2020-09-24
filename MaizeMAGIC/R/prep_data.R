@@ -13,38 +13,14 @@ rawdata_dir <- here("Rawdata")
 ##############################
 # founder genotypes
 ##############################
-founder_gfile <- file.path(rawdata_dir, "MMfounders.geno")
-cleanup <- FALSE
-if(!file.exists(founder_gfile)) {
-    system(paste("gunzip -k", founder_gfile))
-    cleanup <- TRUE
-}
-
-# load data
-fg <- data.table::fread(founder_gfile, data.table=FALSE)
-if(cleanup) unlink(founder_gfile)
+founder_gfile <- file.path(rawdata_dir, "foundergeno_imputed.csv")
+fg <- read_csv(founder_gfile)
 
 # pull out founder names
-founders <- sapply(strsplit(fg$LINE, "\\."), "[", 1)
-ufounders <- unique(founders)
-
-# get consensus genotypes
-ufg <- matrix(nrow=ncol(fg)-1, ncol=length(ufounders))
-dimnames(ufg) <- list(colnames(fg)[-1], ufounders)
-for(u in ufounders) {
-    ufg[,u] <- find_consensus_geno(t(fg[founders==u, -1]), cores=n_cores, na.strings=c("H", "N"))
-}
-# B96 and CML91 are very similar, as are CML91 and F7, and CML91 has 41% missing genotypes
-# CML91 was used in place of HP301 when B96xHP301 failed
-d <- matrix(ncol=9, nrow=9)
-dimnames(d) <- list(colnames(ufg), colnames(ufg))
-for(i in 1:8) for(j in (i+1):9) d[i,j] <- d[j,i] <- mean(ufg[,i]==ufg[,j], na.rm=TRUE)
+founders <- colnames(fg)
 
 # find unique genotypes
-ug <- find_unique_geno(ufg)
-
-# encode genotypes
-fg <- encode_geno(ufg[!is.na(ug[,1]),], ug[!is.na(ug[,1]),], cores=n_cores)
+ug <- find_unique_geno(fg)
 
 ##############################
 # MAGIC genotypes
@@ -63,9 +39,10 @@ if(cleanup) unlink(magic_gfile)
 rownames(g) <- g[,1]
 g <- t(g[,-1])
 
-stopifnot(all(rownames(g) == rownames(ufg)))
+stopifnot(all(rownames(g) == rownames(fg)))
 
 # encode genotypes
+fg <- encode_geno(fg[!is.na(ug[,1]),], ug[!is.na(ug[,1]),], cores=n_cores)
 g <- encode_geno(g[!is.na(ug[,1]),], ug[!is.na(ug[,1]),], cores=n_cores)
 
 ##############################
@@ -89,7 +66,7 @@ colnames(pmap) <- c("marker", "chr", "pos_cM")
 pheno <- as.data.frame( readxl::read_excel(file.path(rawdata_dir, "TableS6.xlsx")) )
 
 # drop parents phenotypes
-pheno <- pheno[!(pheno$Line %in% ufounders),]
+pheno <- pheno[!(pheno$Line %in% founders),]
 
 
 ##############################
@@ -109,7 +86,7 @@ for(char in c("[", "(", "x", ")", "]", "/", "+")) {
 
 # count number of times each parent appears in each cross
 parents <- strsplit(cross, "\\s+")
-parents <- lapply(parents, function(a) table(factor(a[a != ""], levels=ufounders)))
+parents <- lapply(parents, function(a) table(factor(a[a != ""], levels=founders)))
 
 # turn into a matrix
 crossinfo <- matrix(unlist(parents), byrow=TRUE, ncol=length(parents[[1]]))
@@ -126,8 +103,8 @@ for(i in 1:nrow(crossinfo)) {
     }
 }
 
-# multiply counts of parents by 10, and allow small chance for the missing parents
-full_crossinfo <- full_crossinfo*10
+# multiply counts of parents by 100, and allow small chance for the missing parents
+full_crossinfo <- full_crossinfo*100
 full_crossinfo[full_crossinfo==0] <- 1
 full_crossinfo <- cbind(ngen=4, full_crossinfo)
 

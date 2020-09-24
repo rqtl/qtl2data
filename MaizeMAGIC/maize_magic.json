@@ -1,5 +1,5 @@
 {
-  "description": "Maize MAGIC from Dell'acqua et al (2015) doi:10.1186/s13059-015-0716-z",
+  "description": "Maize MAGIC from Dell'Acqua et al (2015) doi:10.1186/s13059-015-0716-z",
   "crosstype": "genril9",
   "sep": ",",
   "na.strings": ["-", "NA"],

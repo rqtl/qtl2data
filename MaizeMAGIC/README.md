@@ -23,6 +23,11 @@ The raw data are available as supplemental tables and at Figshare:
   direct download
   <https://ndownloader.figshare.com/files/2096747>
 
+- Founders sequence-based genotypes (imputed)
+  <>;
+  direct download
+  <https://ndownloader.figshare.com/files/2081430>
+
 - [Table S1](https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-015-0716-z/MediaObjects/13059_2015_716_MOESM1_ESM.xlsx):
   details of maize founder lines
 
@@ -37,7 +42,10 @@ The raw data are available as supplemental tables and at Figshare:
 
 The following files comprise the data reformatted for
 [R/qtl2](https://kbroman.org/rqtl2). We're treating the data as a
-recombinant inbred lines with nine founders,
+recombinant inbred lines with nine founders. For the founder
+genotypes, we combined the array-based data (which had a lot of
+missing or heterozygous calls for the 9th founder, CML91) with the
+sequence-based imputed genotypes.
 
 - [`maize_magic.json`](maize_magic.json), the control file ([JSON format](https://json.org))
 - [`maize_magic_geno.csv`](maize_magic_geno.csv), genotype data for
