@@ -1,0 +1,30 @@
+{
+  "description": "Control file for Recla et al. (2019) DO data (https://doi.org/10.1097/j.pain.0000000000001571)",
+  "crosstype": "do",
+  "sep": ",",
+  "na.strings": ["-", "NA"],
+  "comment.char": "#",
+  "geno": "recla2_geno.csv",
+  "founder_geno": "recla2_foundergeno.csv",
+  "gmap": "recla2_gmap.csv",
+  "pmap": "recla2_pmap.csv",
+  "pheno": "recla2_pheno.csv",
+  "covar": "recla2_covar.csv",
+  "alleles": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "x_chr": "X",
+  "genotypes": {
+    "1": 1,
+    "2": 2,
+    "3": 3
+  },
+  "geno_transposed": true,
+  "founder_geno_transposed": true,
+  "sex": {
+    "covar": "sex",
+    "F": "female",
+    "M": "male"
+  },
+  "cross_info": {
+    "covar": "dogen"
+  }
+}

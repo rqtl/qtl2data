@@ -8,6 +8,9 @@ Example data sets for [R/qtl2](https://kbroman.org/qtl2).
 - [`DO_Recla`](DO_Recla) - Diversity Outcross mouse data, from
   [Recla et al. (2014) Mamm Genome 25:211-222](https://www.ncbi.nlm.nih.gov/pubmed/24700285)
 
+- [`DO_Recla2`](DO_Recla2) - Diversity Outcross mouse data, from
+  [Recla et al. (2019) Pain 160:1740-1753](https://doi.org/10.1097/j.pain.0000000000001571)
+
 - [`DO_Svenson291`](DO_Svenson291) - Diversity Outcross mouse data, from
   [Gatti et al. (2017) bioRxiv doi:10.1101/098657](https://doi.org/10.1101/098657)
 
