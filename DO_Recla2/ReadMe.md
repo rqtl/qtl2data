@@ -54,5 +54,5 @@ Load these data into R directly from the web as follows:
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
                "qtl2data/master/DO_Recla2/recla2.zip")
-recla <- read_cross2(file)
+recla2 <- read_cross2(file)
 ```
