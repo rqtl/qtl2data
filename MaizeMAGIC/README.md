@@ -24,7 +24,7 @@ The raw data are available as supplemental tables and at Figshare:
   <https://ndownloader.figshare.com/files/2096747>
 
 - Founders sequence-based genotypes (imputed)
-  <>;
+  <https://doi.org/10.6084/m9.figshare.1425350>;
   direct download
   <https://ndownloader.figshare.com/files/2081430>
 
