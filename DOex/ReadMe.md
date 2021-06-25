@@ -30,6 +30,9 @@ Also included are some derived calculations:
 
 - [`DOex_genoprobs.rds`](DOex_genoprobs.rds) - Genotype probabilities
   calculated with `qtl2::calc_genoprob()`
+- [`DOex_genoprobs_2.rds`](DOex_genoprobs.rds) - Genotype probabilities
+  calculated with `qtl2::calc_genoprob()`, but just chromosome 2
+  (requested by [Brian Yandell](https://github.com/byandell))
 - [`DOex_alleleprobs.rds`](DOex_alleleprobs.rds) - Allele probabilities
   calculated from [`DOex_genoprobs.rds`](DOex_genoprobs) and collapsed
   to alleles with `qtl2::genoprob_to_alleleprob()`
