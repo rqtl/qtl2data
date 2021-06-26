@@ -94,7 +94,7 @@ dimnames(crossinfo) <- list(family, names(parents[[1]]))
 
 # expand to a matrix for all of the MAGIC lines
 full_crossinfo <- matrix(ncol=ncol(crossinfo), nrow=ncol(g))
-dimnames(full_crossinfo) <- list(colnames(g), rownames(full_crossinfo))
+dimnames(full_crossinfo) <- list(colnames(g), colnames(crossinfo))
 family <- sapply(strsplit(rownames(full_crossinfo), "_"), "[", 1)
 ufamily <- rownames(crossinfo)
 for(i in 1:nrow(crossinfo)) {
