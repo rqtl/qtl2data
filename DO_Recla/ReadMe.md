@@ -36,12 +36,12 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 ### Citations
 
 Recla JM, Robledo RF, Gatti DM, Bult CJ, Churchill GA, Chesler EJ (2014)
-[Precise genetic mapping and integrative bioinformatics in Diversity Outbred mice reveals Hydin as a novel pain gene](https://www.ncbi.nlm.nih.gov/pubmed/24700285).
+[Precise genetic mapping and integrative bioinformatics in Diversity Outbred mice reveals Hydin as a novel pain gene](https://doi.org/10.1007/s00335-014-9508-0).
 Mamm Genome 25:211-222
 
 Logan RW, Robledo RF, Recla JM, Philip VM, Bubier JA, Jay JJ, Harwood
 C, Wilcox T, Gatti DM, Bult CJ, Churchill GA, Chesler EJ (2013)
-[High-precision genetic mapping of behavioral traits in the diversity outbred mouse population](https://www.ncbi.nlm.nih.gov/pubmed/23433259).
+[High-precision genetic mapping of behavioral traits in the diversity outbred mouse population](https://doi.org/10.1111/gbb.12029).
 Genes Brain Behav 12:424-437
 
 

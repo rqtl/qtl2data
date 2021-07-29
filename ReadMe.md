@@ -3,10 +3,10 @@
 Example data sets for [R/qtl2](https://kbroman.org/qtl2).
 
 - [`DO_Gatti2014`](DO_Gatti2014) - Diversity Outcross mouse data, from
-  [Gatti et al. (2014) G3 4:1623-1633](http://www.g3journal.org/content/4/9/1623.full.pdf)
+  [Gatti et al. (2014) G3 (Bethesda) 4:1623-1633](https://doi.org/10.1534/g3.114.013748)
 
 - [`DO_Recla`](DO_Recla) - Diversity Outcross mouse data, from
-  [Recla et al. (2014) Mamm Genome 25:211-222](https://www.ncbi.nlm.nih.gov/pubmed/24700285)
+  [Recla et al. (2014) Mamm Genome 25:211-222](https://doi.org/10.1007/s00335-014-9508-0)
 
 - [`DO_Recla2`](DO_Recla2) - Diversity Outcross mouse data, from
   [Recla et al. (2019) Pain 160:1740-1753](https://doi.org/10.1097/j.pain.0000000000001571)
@@ -23,7 +23,7 @@ Example data sets for [R/qtl2](https://kbroman.org/qtl2).
   as well as
   [Tian et al. (2015) Genetics 201:1253-1262](https://doi.org/10.1534/genetics.115.179432),
   and
-  [Broman et al. (2015) G3 5:2177-2186](https://doi.org/10.1534/g3.115.019778).
+  [Broman et al. (2015) G3 (Bethesda) 5:2177-2186](https://doi.org/10.1534/g3.115.019778).
 
 - [`Gough`](Gough) - Intercross data, from Bret Payseur, for a mouse
   intercross between Gough Island mice and WSB. See

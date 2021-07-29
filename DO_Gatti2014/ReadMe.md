@@ -44,8 +44,8 @@ See the [R/qtl2 input file format](https://kbroman.org/qtl2/assets/vignettes/inp
 Gatti DM, Svenson KL, Shabalin A, Wu L-Y, Valdar W, Simecek P, Goodwin
 N, Cheng R, Pomp D, Palmer A, Chesler EJ, Broman KW, Churchill GA
 (2014)
-[Quantitative trait locus mapping methods for Diversity Outbred mice](http://www.g3journal.org/content/4/9/1623.full.pdf).
-G3 4:1623-1633
+[Quantitative trait locus mapping methods for Diversity Outbred mice](https://doi.org/10.1534/g3.114.013748).
+G3 (Bethesda) 4:1623-1633
 
 
 ### Use with [R/qtl2](https://kbroman.org/qtl2)
