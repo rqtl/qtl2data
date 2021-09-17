@@ -122,11 +122,11 @@ $(document).ready(function () {
 </div>
 
 
-<p>This is a quick analysis of the data from Gatti et al. (2014), available at <a href="https://github.com/rqtl/qtl2data/tree/master/DO_Gatti2014" class="uri">https://github.com/rqtl/qtl2data/tree/master/DO_Gatti2014</a></p>
+<p>This is a quick analysis of the data from Gatti et al. (2014), available at <a href="https://github.com/rqtl/qtl2data/tree/main/DO_Gatti2014" class="uri">https://github.com/rqtl/qtl2data/tree/main/DO_Gatti2014</a></p>
 <p>We first load the data directly from the web.</p>
 <pre class="r"><code>library(qtl2)
 file &lt;- paste0(&quot;https://raw.githubusercontent.com/rqtl/&quot;,
-               &quot;qtl2data/master/DO_Gatti2014/do.zip&quot;)
+               &quot;qtl2data/main/DO_Gatti2014/do.zip&quot;)
 gatti &lt;- read_cross2(file)</code></pre>
 <p>We calculate genotype probabilities. I use <code>n_cores &lt;- 0</code> throughout (which detects the number of available CPU cores and uses all of them). If you have limited wRAM on your machine, you may need to change this to <code>n_cores &lt;- 1</code>.</p>
 <pre class="r"><code>n_cores &lt;- 0

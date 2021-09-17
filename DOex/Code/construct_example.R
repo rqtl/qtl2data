@@ -5,7 +5,7 @@ set.seed(20180804)
 # Full Recla data
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/DO_Recla/recla.zip")
+               "qtl2data/main/DO_Recla/recla.zip")
 DOex <- read_cross2(file)
 
 # reduce to 3 chromosomes

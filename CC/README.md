@@ -76,6 +76,6 @@ Load these data into R directly from the web as follows:
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/CC/cc.zip")
+               "qtl2data/main/CC/cc.zip")
 cc <- read_cross2(file)
 ```

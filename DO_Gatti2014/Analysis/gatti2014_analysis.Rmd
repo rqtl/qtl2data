@@ -11,14 +11,14 @@ knitr::opts_chunk$set(fig.width=11, fig.height=6,
 
 This is a quick analysis of the data from Gatti et al. (2014),
 available at
-<https://github.com/rqtl/qtl2data/tree/master/DO_Gatti2014>
+<https://github.com/rqtl/qtl2data/tree/main/DO_Gatti2014>
 
 We first load the data directly from the web.
 
 ```{r load_data}
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/DO_Gatti2014/do.zip")
+               "qtl2data/main/DO_Gatti2014/do.zip")
 gatti <- read_cross2(file)
 ```
 

@@ -67,7 +67,7 @@ Load these data into R directly from the web as follows:
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/B6BTBR/b6btbr.zip")
+               "qtl2data/main/B6BTBR/b6btbr.zip")
 b6btbr <- read_cross2(file)
 ```
 
@@ -77,7 +77,7 @@ for a single tissue, as a matrix:
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/B6BTBR/b6btbr_islet.csv.zip")
+               "qtl2data/main/B6BTBR/b6btbr_islet.csv.zip")
 islet <- read_pheno(file)
 ```
 
@@ -86,7 +86,7 @@ information, creating a list with `pheno` and `phenocovar`:
 
 ```r
 library(qtl2)
-url <- "https://raw.githubusercontent.com/rqtl/qtl2data/master/B6BTBR/"
+url <- "https://raw.githubusercontent.com/rqtl/qtl2data/main/B6BTBR/"
 islet_list <- read_pheno(paste0(url, "b6btbr_islet.csv.zip"),
                          paste0(url, "b6btbr_microarray_annotation.csv.zip"))
 ```

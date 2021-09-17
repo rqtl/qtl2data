@@ -11,14 +11,14 @@ knitr::opts_chunk$set(fig.width=11, fig.height=6,
 
 This is a quick analysis of the data from Recla et al. (2014)
 and Logan et al (2013), available at
-<https://github.com/rqtl/qtl2data/tree/master/DO_Recla>
+<https://github.com/rqtl/qtl2data/tree/main/DO_Recla>
 
 We first load the data directly from the web.
 
 ```{r load_data}
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/DO_Recla/recla.zip")
+               "qtl2data/main/DO_Recla/recla.zip")
 recla <- read_cross2(file)
 ```
 

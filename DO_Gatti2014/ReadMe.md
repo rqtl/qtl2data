@@ -55,6 +55,6 @@ Load these data into R directly from the web as follows:
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/DO_Gatti2014/do.zip")
+               "qtl2data/main/DO_Gatti2014/do.zip")
 do <- read_cross2(file)
 ```

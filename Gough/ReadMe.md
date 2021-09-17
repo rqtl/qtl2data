@@ -47,6 +47,6 @@ Load these data into R directly from the web as follows:
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/Gough/gough.zip")
+               "qtl2data/main/Gough/gough.zip")
 gough <- read_cross2(file)
 ```

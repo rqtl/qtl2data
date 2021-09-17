@@ -92,6 +92,6 @@ version of the physical map; replace 9 with 8 for the TAIR8 version):
 ```r
 library(qtl2)
 file <- paste0("https://raw.githubusercontent.com/rqtl/",
-               "qtl2data/master/ArabMAGIC/arabmagic_tair9.zip")
+               "qtl2data/main/ArabMAGIC/arabmagic_tair9.zip")
 arab <- read_cross2(file)
 ```
